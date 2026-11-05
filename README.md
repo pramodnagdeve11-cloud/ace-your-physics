@@ -1,7 +1,7 @@
 # ⚛️ Ace Your Physics – Official Website
 
 > **"Better Questions, Better Understanding"**  
-> Personalized 1-on-1 Online Physics & Mathematics Mentorship by **Vikash Hanwat** (M.Sc. Physics, GATE Qualified, CTET Qualified, Ex-Allen Faculty 5 Yrs).
+> Personalized 1-on-1 Online Physics & Mathematics Mentorship by **Vikash Hanwat** (Bachelor's in Maths & Physics, Master's in Physics (ongoing), Material Science Researcher).
 
 ![Ace Your Physics Banner](assets/images/vikash-portrait.jpg)
 
