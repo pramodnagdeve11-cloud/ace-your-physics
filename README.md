@@ -83,7 +83,7 @@ No build steps, package managers, or compilers required! This project runs nativ
 
 - **Tutor:** Vikash Hanwat
 - **WhatsApp:** [+91 96174 45950](https://wa.me/919617445950)
-- **Email:** contact@aceyourphysics.com
+- **Email:** [aceyourphysics@gmail.com](mailto:aceyourphysics@gmail.com)
 - **Mode:** Online 1-on-1 via Zoom (Global Timezones)
 
 ---
