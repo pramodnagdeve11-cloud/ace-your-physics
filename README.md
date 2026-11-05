@@ -1,7 +1,8 @@
 # ⚛️ Ace Your Physics – Official Website
 
 > **"Better Questions, Better Understanding"**  
-> Personalized 1-on-1 Online Physics & Mathematics Mentorship by **Vikash Hanwat** (Bachelor's in Maths & Physics, Master's in Physics (ongoing), Material Science Researcher).
+> Personalized 1-on-1 Online Physics & Mathematics Mentorship by **Vikash Hanwat** (7 Years Experience | Bachelor's in Maths & Physics, Master's in Physics (ongoing), Material Science Researcher).  
+> **Core Expertise:** Mechanics · Optics · Electromagnetism · Modern Physics.
 
 ![Ace Your Physics Banner](assets/images/vikash-portrait.jpg)
 
