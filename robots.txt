@@ -1,0 +1,6 @@
+# Robots.txt for Ace Your Physics
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://aceyourphysics.com/sitemap.xml
