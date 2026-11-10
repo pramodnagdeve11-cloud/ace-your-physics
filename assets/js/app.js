@@ -9,6 +9,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   initNavbar();
   initCurriculumFilter();
   initVisualLab();
@@ -16,6 +17,52 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initResourceDownloads();
 });
+
+/* ==========================================================================
+   0. THEME TOGGLE (DARK / LIGHT MODE - SAFED / DARK THEME)
+   ========================================================================== */
+function initThemeToggle() {
+  const toggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  if (!toggleBtns.length) return;
+
+  function applyTheme(isLight) {
+    if (isLight) {
+      document.body.classList.add('light-theme');
+    } else {
+      document.body.classList.remove('light-theme');
+    }
+
+    toggleBtns.forEach(btn => {
+      const icon = btn.querySelector('.theme-icon');
+      const text = btn.querySelector('.theme-text');
+      if (isLight) {
+        if (icon) icon.textContent = '☀️';
+        if (text) text.textContent = 'Light';
+        btn.setAttribute('title', 'Switch to Dark Mode');
+        btn.setAttribute('aria-label', 'Switch to Dark Mode');
+      } else {
+        if (icon) icon.textContent = '🌙';
+        if (text) text.textContent = 'Dark';
+        btn.setAttribute('title', 'Switch to Light / White Background Mode');
+        btn.setAttribute('aria-label', 'Switch to Light / White Background Mode');
+      }
+    });
+  }
+
+  // Check saved theme in localStorage
+  const savedTheme = localStorage.getItem('ayp_theme');
+  const isCurrentlyLight = savedTheme === 'light';
+  applyTheme(isCurrentlyLight);
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const willBeLight = !document.body.classList.contains('light-theme');
+      localStorage.setItem('ayp_theme', willBeLight ? 'light' : 'dark');
+      applyTheme(willBeLight);
+    });
+  });
+}
 
 /* ==========================================================================
    1. NAVBAR & SCROLL EFFECTS
@@ -34,28 +81,23 @@ function initNavbar() {
   });
 
   if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
-      const isVisible = navLinks.style.display === 'flex';
-      navLinks.style.display = isVisible ? 'none' : 'flex';
-      if (!isVisible) {
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '78px';
-        navLinks.style.left = '0';
-        navLinks.style.right = '0';
-        navLinks.style.background = '#0a0f1d';
-        navLinks.style.padding = '24px';
-        navLinks.style.borderBottom = '1px solid rgba(148, 163, 184, 0.15)';
-      }
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('mobile-open');
     });
 
-    // Close mobile nav on click
+    // Close mobile nav on click of any link
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          navLinks.style.display = 'none';
-        }
+        navLinks.classList.remove('mobile-open');
       });
+    });
+
+    // Close when clicking outside header
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target)) {
+        navLinks.classList.remove('mobile-open');
+      }
     });
   }
 }
