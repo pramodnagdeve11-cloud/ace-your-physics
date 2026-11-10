@@ -14,6 +14,19 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>">
+  
+  <!-- Immediate Theme Initializer to prevent light/dark flicker -->
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('ayp_theme');
+        if (savedTheme === 'light') {
+          document.documentElement.classList.add('light-theme');
+          document.body && document.body.classList.add('light-theme');
+        }
+      } catch(e) {}
+    })();
+  </script>
 </head>
 <body>
 
@@ -41,6 +54,10 @@
       </ul>
 
       <div class="nav-cta">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark and Light Mode" title="Theme badlo (Safed / Dark Mode)">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark</span>
+        </button>
         <button class="btn btn-primary open-demo-modal">
           <span>Book Free Demo</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -104,14 +121,14 @@
         </div>
       </div>
 
-      <!-- Hero Visual: Studio Headshot Card -->
+      <!-- Hero Visual: Official Ace Your Physics Banner Card -->
       <div class="hero-visual">
         <div class="teacher-card-hero">
-          <div class="teacher-img-wrap">
-            <img src="assets/images/vikash-portrait.jpg" alt="Vikash Hanwat - Master Physics Educator" loading="eager">
+          <div class="teacher-img-wrap banner-img-wrap">
+            <img src="assets/images/ace-your-physics-hero-banner.jpg" alt="Ace Your Physics - Your Physics Success Partner by Vikash Hanwat" loading="eager">
             <div class="verified-tag">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              <span>Verified Master Tutor</span>
+              <span>Official Banner</span>
             </div>
           </div>
 
@@ -128,20 +145,20 @@
               <span class="cred-pill">Material Science Researcher</span>
             </div>
 
-            <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(148, 163, 184, 0.12);">
-              <span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-blue); font-weight: 700; display: block; margin-bottom: 8px;">Core Physics Expertise</span>
-              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                <span class="board-tag" style="padding: 4px 10px; font-size: 0.76rem; background: rgba(30, 41, 59, 0.7); border-color: rgba(56, 189, 248, 0.25);">⚙️ Mechanics</span>
-                <span class="board-tag" style="padding: 4px 10px; font-size: 0.76rem; background: rgba(30, 41, 59, 0.7); border-color: rgba(56, 189, 248, 0.25);">🔬 Optics</span>
-                <span class="board-tag" style="padding: 4px 10px; font-size: 0.76rem; background: rgba(30, 41, 59, 0.7); border-color: rgba(56, 189, 248, 0.25);">⚡ Electromagnetism</span>
-                <span class="board-tag" style="padding: 4px 10px; font-size: 0.76rem; background: rgba(30, 41, 59, 0.7); border-color: rgba(56, 189, 248, 0.25);">⚛️ Modern Physics</span>
+            <div class="hero-domains-wrap">
+              <span class="hero-domains-label">Core Physics Expertise</span>
+              <div class="hero-domains-list">
+                <span class="board-tag hero-expertise-tag">⚙️ Mechanics</span>
+                <span class="board-tag hero-expertise-tag">🔬 Optics</span>
+                <span class="board-tag hero-expertise-tag">⚡ Electromagnetism</span>
+                <span class="board-tag hero-expertise-tag">⚛️ Modern Physics</span>
               </div>
             </div>
           </div>
 
           <div class="floating-badge-motto">
             <span>💡</span>
-            <span>Better Questions · Better Understanding</span>
+            <span>Understand Deeply · Think Scientifically · Excel Confidently</span>
           </div>
         </div>
       </div>
@@ -187,20 +204,20 @@
             With <strong>7 years of specialized teaching experience</strong>, a <strong>Bachelor's in Maths & Physics</strong>, currently pursuing a <strong>Master's in Physics (ongoing)</strong>, and working actively as a <strong>Material Science Researcher</strong>, I bring laboratory-grade conceptual clarity and intuitive problem-solving techniques to high school and competitive students worldwide.
           </p>
 
-          <div style="background: rgba(30, 41, 59, 0.45); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: var(--radius-md); padding: 16px 20px; margin: 6px 0 10px;">
-            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-blue); display: block; margin-bottom: 10px;">Core Physics Domains of Expertise</span>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-              <div style="font-size: 0.9rem; color: #f1f5f9; display: flex; align-items: center; gap: 8px;">
-                <span>⚙️</span> <span><strong>Mechanics:</strong> Kinematics, Dynamics & Rotational</span>
+          <div class="domains-expertise-card">
+            <span class="domains-heading">Core Physics Domains of Expertise</span>
+            <div class="domains-grid">
+              <div class="domain-item">
+                <span class="domain-icon">⚙️</span> <span><strong>Mechanics:</strong> Kinematics, Dynamics & Rotational</span>
               </div>
-              <div style="font-size: 0.9rem; color: #f1f5f9; display: flex; align-items: center; gap: 8px;">
-                <span>🔬</span> <span><strong>Optics:</strong> Ray & Wave Phenomena</span>
+              <div class="domain-item">
+                <span class="domain-icon">🔬</span> <span><strong>Optics:</strong> Ray & Wave Phenomena</span>
               </div>
-              <div style="font-size: 0.9rem; color: #f1f5f9; display: flex; align-items: center; gap: 8px;">
-                <span>⚡</span> <span><strong>Electromagnetism:</strong> Fields, Circuits & Induction</span>
+              <div class="domain-item">
+                <span class="domain-icon">⚡</span> <span><strong>Electromagnetism:</strong> Fields, Circuits & Induction</span>
               </div>
-              <div style="font-size: 0.9rem; color: #f1f5f9; display: flex; align-items: center; gap: 8px;">
-                <span>⚛️</span> <span><strong>Modern Physics:</strong> Quantum & Atomic Theory</span>
+              <div class="domain-item">
+                <span class="domain-icon">⚛️</span> <span><strong>Modern Physics:</strong> Quantum & Atomic Theory</span>
               </div>
             </div>
           </div>
@@ -237,19 +254,21 @@
           </div>
         </div>
 
-        <!-- Pedagogy Visual Collage -->
+        <!-- Pedagogy Visual Collage Featuring Lead Educator Portrait & Action Teaching -->
         <div class="pedagogy-gallery">
-          <div class="gallery-card featured">
-            <img src="assets/images/vikash-teaching.jpg" alt="Vikash Hanwat teaching Physical Science and Kinematics at the whiteboard" loading="lazy">
-            <div class="gallery-caption">Interactive Whiteboard & Conceptual Physics</div>
+          <div class="gallery-card featured-portrait">
+            <img src="assets/images/vikash-portrait.jpg" alt="Vikash Hanwat - Master Physics Educator & Researcher" loading="lazy">
+            <div class="gallery-caption">Vikash Hanwat · Founder, Mentor & Researcher</div>
           </div>
-          <div class="gallery-card secondary-1">
-            <img src="assets/images/vikash-podium.jpg" alt="Vikash Hanwat delivering seminar talk on Physics Education" loading="lazy">
-            <div class="gallery-caption">Seminar & Academic Keynotes</div>
-          </div>
-          <div class="gallery-card secondary-2">
-            <img src="assets/images/vikash-desk.jpg" alt="Vikash Hanwat one-on-one session consultation" loading="lazy">
-            <div class="gallery-caption">1-on-1 Dedicated Student Mentorship</div>
+          <div class="gallery-row-split">
+            <div class="gallery-card">
+              <img src="assets/images/vikash-teaching.jpg" alt="Vikash Hanwat teaching Physical Science and Kinematics at the whiteboard" loading="lazy">
+              <div class="gallery-caption">Interactive Whiteboard & Concepts</div>
+            </div>
+            <div class="gallery-card">
+              <img src="assets/images/vikash-podium.jpg" alt="Vikash Hanwat delivering seminar talk on Physics Education" loading="lazy">
+              <div class="gallery-caption">Seminar & Academic Keynotes</div>
+            </div>
           </div>
         </div>
       </div>
@@ -259,7 +278,7 @@
   <!-- ==========================================================================
        CURRICULA & COURSES (FEATURING FOUNDATION PHYSICS AS IN USER'S IMAGE 5)
        ========================================================================== -->
-  <section class="section" id="courses" style="background: rgba(15, 23, 42, 0.35);">
+  <section class="section section-tinted" id="courses">
     <div class="container">
       <div class="section-head">
         <div class="badge">
@@ -284,7 +303,7 @@
         <div class="course-card highlighted" data-category="indian">
           <div class="course-category-badge">A. Indian Curriculum</div>
           <div class="course-header">
-            <img src="assets/images/curriculum-sample.jpg" alt="Foundation Physics Classes 9-10" class="course-thumb">
+            <div class="res-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">📚</div>
             <div class="course-title-group">
               <h3>01. Foundation Physics</h3>
               <span class="grade-pill">Classes 9–10</span>
@@ -570,41 +589,47 @@
         <p>Big batch coaching centres leave students hesitant to ask questions. Ace Your Physics provides a safe, highly-customized 1-on-1 environment where every query is answered with patience and depth.</p>
       </div>
 
-      <div class="features-grid">
-        <div class="feature-box">
-          <div class="feature-icon-wrap">💻</div>
-          <h4>Dedicated 1-on-1 Sessions</h4>
-          <p>No crowded Zoom rooms. Vikash Sir works directly with you, adapting the lesson pace and depth in real-time to your unique learning style.</p>
+      <div class="why-choose-layout">
+        <div class="why-choose-graphic-box">
+          <img src="assets/images/why-choose-ace-your-physics.jpg" alt="Why You Should Choose AceYourPhysics - Light Up Your Inner World" class="why-graphic-img" loading="lazy">
         </div>
 
-        <div class="feature-box">
-          <div class="feature-icon-wrap">📱</div>
-          <h4>Continuous WhatsApp Support</h4>
-          <p>Stuck on an assignment problem at 9 PM? Send a photo on WhatsApp to <strong>+91 96174 45950</strong> and get prompt step-by-step guidance before your next session.</p>
-        </div>
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon-wrap">💻</div>
+            <h4>Dedicated 1-on-1 Sessions</h4>
+            <p>No crowded Zoom rooms. Vikash Sir works directly with you, adapting the lesson pace and depth in real-time to your unique learning style.</p>
+          </div>
 
-        <div class="feature-box">
-          <div class="feature-icon-wrap">📊</div>
-          <h4>Transparent Parent Updates</h4>
-          <p>Parents receive regular progress feedback on concept mastery, test scores, homework completion, and targeted areas of improvement.</p>
-        </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrap">📱</div>
+            <h4>Continuous WhatsApp Support</h4>
+            <p>Stuck on an assignment problem at 9 PM? Send a photo on WhatsApp to <strong>+91 96174 45950</strong> and get prompt step-by-step guidance before your next session.</p>
+          </div>
 
-        <div class="feature-box">
-          <div class="feature-icon-wrap">🎥</div>
-          <h4>Session Recordings & PDF Notes</h4>
-          <p>Full recordings of every class plus high-resolution color-coded handwritten digital whiteboard notes are uploaded for easy exam revision.</p>
-        </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrap">📊</div>
+            <h4>Transparent Parent Updates</h4>
+            <p>Parents receive regular progress feedback on concept mastery, test scores, homework completion, and targeted areas of improvement.</p>
+          </div>
 
-        <div class="feature-box">
-          <div class="feature-icon-wrap">🎯</div>
-          <h4>Curriculum-Exact Worksheets</h4>
-          <p>Custom question banks categorized by difficulty: foundational drill, past board examination questions, and challenging Olympiad-style problems.</p>
-        </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrap">🎥</div>
+            <h4>Session Recordings & PDF Notes</h4>
+            <p>Full recordings of every class plus high-resolution color-coded handwritten digital whiteboard notes are uploaded for easy exam revision.</p>
+          </div>
 
-        <div class="feature-box">
-          <div class="feature-icon-wrap">⚡</div>
-          <h4>Flexible Global Scheduling</h4>
-          <p>Coordinating across USA, UK, Singapore, Middle East, and Indian time zones so learning fits seamlessly with your school timetable.</p>
+          <div class="feature-box">
+            <div class="feature-icon-wrap">🎯</div>
+            <h4>Curriculum-Exact Worksheets</h4>
+            <p>Custom question banks categorized by difficulty: foundational drill, past board examination questions, and challenging Olympiad-style problems.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrap">⚡</div>
+            <h4>Flexible Global Scheduling</h4>
+            <p>Coordinating across USA, UK, Singapore, Middle East, and Indian time zones so learning fits seamlessly with your school timetable.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -613,7 +638,7 @@
   <!-- ==========================================================================
        FREE DOWNLOADABLE RESOURCES
        ========================================================================== -->
-  <section class="section" id="resources" style="background: rgba(15, 23, 42, 0.4);">
+  <section class="section section-tinted" id="resources">
     <div class="container">
       <div class="section-head">
         <div class="badge">
@@ -721,7 +746,7 @@
   <!-- ==========================================================================
        FREQUENTLY ASKED QUESTIONS (ACCORDION)
        ========================================================================== -->
-  <section class="section" id="faq" style="background: rgba(15, 23, 42, 0.3);">
+  <section class="section section-tinted" id="faq">
     <div class="container">
       <div class="section-head">
         <div class="badge">
@@ -788,19 +813,19 @@
   <!-- ==========================================================================
        CALL TO ACTION BANNER
        ========================================================================== -->
-  <section class="section" style="padding-top: 40px;">
+  <section class="section cta-section">
     <div class="container">
-      <div style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.25) 0%, rgba(99, 102, 241, 0.25) 100%); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: var(--radius-lg); padding: 50px 30px; text-align: center; box-shadow: var(--shadow-lg);">
-        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 16px;">Ready to Experience Physics with True Clarity?</h2>
-        <p style="max-width: 620px; margin: 0 auto 30px; font-size: 1.1rem; color: #cbd5e1;">
+      <div class="cta-banner-box">
+        <h2 class="cta-title">Ready to Experience Physics with True Clarity?</h2>
+        <p class="cta-desc">
           Book your free 1-on-1 introductory session today. Discuss your goals, identify problem areas, and see the difference personalized teaching makes.
         </p>
-        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-          <button class="btn btn-primary open-demo-modal" style="font-size: 1.05rem; padding: 15px 32px;">
+        <div class="cta-actions">
+          <button class="btn btn-primary open-demo-modal cta-btn">
             <span>Schedule Free Demo Class</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <a href="https://wa.me/919617445950?text=Hello%20Vikash%20Sir%2C%20I%20would%20like%20to%20inquire%20about%20Ace%20Your%20Physics%20classes." target="_blank" class="btn btn-whatsapp" style="font-size: 1.05rem; padding: 15px 28px;">
+          <a href="https://wa.me/919617445950?text=Hello%20Vikash%20Sir%2C%20I%20would%20like%20to%20inquire%20about%20Ace%20Your%20Physics%20classes." target="_blank" class="btn btn-whatsapp cta-btn">
             <span>Chat on WhatsApp (+91 96174 45950)</span>
           </a>
         </div>
@@ -968,6 +993,12 @@
     </svg>
     <span>Chat with Vikash Sir</span>
   </a>
+
+  <!-- Floating Theme Toggle Switch -->
+  <button class="floating-theme-toggle theme-toggle-btn" aria-label="Toggle Dark and Light Mode" title="Theme badlo (Safed / Dark Mode)">
+    <span class="theme-icon">🌙</span>
+    <span class="theme-text">Dark</span>
+  </button>
 
   <!-- Application Script -->
   <script src="assets/js/app.js"></script>
