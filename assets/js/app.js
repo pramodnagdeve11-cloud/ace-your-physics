@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initCurriculumFilter();
   initVisualLab();
+  initConceptHub();
   initBookingModal();
   initFaqAccordion();
-  initResourceDownloads();
 });
 
 /* ==========================================================================
@@ -221,7 +221,28 @@ function initVisualLab() {
     });
   });
 
-  angleSlider.addEventListener('input', updateMetricsDisplay);
+  // Angle Presets
+  const anglePresetBtns = document.querySelectorAll('.angle-preset-btn');
+  anglePresetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      anglePresetBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const val = btn.getAttribute('data-angle');
+      angleSlider.value = val;
+      updateMetricsDisplay();
+    });
+  });
+
+  angleSlider.addEventListener('input', () => {
+    anglePresetBtns.forEach(b => {
+      if (b.getAttribute('data-angle') === angleSlider.value) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
+    });
+    updateMetricsDisplay();
+  });
   velocitySlider.addEventListener('input', updateMetricsDisplay);
 
   function drawEnvironment() {
@@ -534,15 +555,47 @@ function initFaqAccordion() {
 }
 
 /* ==========================================================================
-   6. FREE RESOURCES DOWNLOAD TOAST
+   6. INTERACTIVE CONCEPT & FORMULA HUB
    ========================================================================== */
-function initResourceDownloads() {
-  const resourceCards = document.querySelectorAll('.resource-card');
+function initConceptHub() {
+  const tabs = document.querySelectorAll('.concept-tab-btn');
+  const cards = document.querySelectorAll('.concept-card');
+  const copyBtns = document.querySelectorAll('.copy-formula-btn');
 
-  resourceCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const title = card.querySelector('h5')?.textContent || 'Physics Resource';
-      showToast(`📥 Starting download: ${title}`);
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.getAttribute('data-topic');
+
+      cards.forEach(card => {
+        const topic = card.getAttribute('data-topic');
+        if (filter === 'all' || topic === filter) {
+          card.style.display = 'flex';
+          card.style.animation = 'fadeIn 0.3s ease forwards';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  copyBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const formula = btn.getAttribute('data-formula') || btn.closest('.concept-card')?.querySelector('.formula-math')?.textContent;
+      if (formula) {
+        navigator.clipboard.writeText(formula.trim()).then(() => {
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>`;
+          showToast(`📋 Copied to clipboard: ${formula.trim()}`);
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+          }, 1800);
+        }).catch(() => {
+          showToast(`Formula: ${formula.trim()}`);
+        });
+      }
     });
   });
 }
