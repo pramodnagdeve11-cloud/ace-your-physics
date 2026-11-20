@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initConceptHub();
   initBookingModal();
   initFaqAccordion();
+  initLightbox();
 });
 
 /* ==========================================================================
@@ -636,3 +637,49 @@ function showToast(message) {
     toast.style.transform = 'translateX(-50%) translateY(10px)';
   }, 3200);
 }
+
+/* ==========================================================================
+   7. IMAGE LIGHTBOX (STUDENT REVIEW CARDS & CURRICULUM OVERVIEW)
+   ========================================================================== */
+function initLightbox() {
+  const lightbox = document.getElementById('imageLightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const closeBtn = document.getElementById('lightboxCloseBtn');
+  const triggers = document.querySelectorAll('.open-lightbox-img');
+
+  if (!lightbox || !lightboxImg) return;
+
+  function openLightbox(src, title = '') {
+    lightboxImg.src = src;
+    lightboxImg.alt = title || 'Review Card Preview';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      lightboxImg.src = '';
+    }, 250);
+  }
+
+  triggers.forEach(el => {
+    el.addEventListener('click', () => {
+      const src = el.getAttribute('data-img-src') || (el.querySelector('img') ? el.querySelector('img').src : '');
+      const title = el.getAttribute('data-img-title') || '';
+      if (src) openLightbox(src, title);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+}
+
