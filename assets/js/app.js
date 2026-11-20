@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBookingModal();
   initFaqAccordion();
   initLightbox();
+  initCalculusCalculator();
 });
 
 /* ==========================================================================
@@ -48,6 +49,8 @@ function initThemeToggle() {
         btn.setAttribute('aria-label', 'Switch to Light / White Background Mode');
       }
     });
+
+    document.dispatchEvent(new CustomEvent('themeChanged', { detail: { isLight } }));
   }
 
   // Check saved theme in localStorage (defaults to light theme like AP Guru)
@@ -681,5 +684,629 @@ function initLightbox() {
       closeLightbox();
     }
   });
+}
+
+/* ==========================================================================
+   8. INTERACTIVE CALCULUS & PHYSICS SOLVER (CALCULATOR)
+   ========================================================================== */
+function initCalculusCalculator() {
+  const container = document.getElementById('calculus-calc');
+  if (!container) return;
+
+  // Elements
+  const modeDerivativeBtn = document.getElementById('calcModeDerivative');
+  const modeIntegralBtn = document.getElementById('calcModeIntegral');
+  const presetBtns = container.querySelectorAll('.calc-preset-btn');
+
+  const sliderA = document.getElementById('sliderA');
+  const numA = document.getElementById('numA');
+  const labelA = document.getElementById('labelA');
+
+  const sliderB = document.getElementById('sliderB');
+  const numB = document.getElementById('numB');
+  const labelB = document.getElementById('labelB');
+
+  const sliderC = document.getElementById('sliderC');
+  const numC = document.getElementById('numC');
+  const labelC = document.getElementById('labelC');
+
+  const sliderD = document.getElementById('sliderD');
+  const numD = document.getElementById('numD');
+  const labelD = document.getElementById('labelD');
+
+  const sliderT0 = document.getElementById('sliderT0');
+  const numT0 = document.getElementById('numT0');
+  const labelT0 = document.getElementById('labelT0');
+
+  const integralLimitsGroup = document.getElementById('integralLimitsGroup');
+  const numBoundA = document.getElementById('numBoundA');
+  const numBoundB = document.getElementById('numBoundB');
+  const labelBounds = document.getElementById('labelBounds');
+
+  const funcCoeffTitle = document.getElementById('funcCoeffTitle');
+  const evalParamTitle = document.getElementById('evalParamTitle');
+  const evalParamSubtitle = document.getElementById('evalParamSubtitle');
+
+  const calcEqDisplay = document.getElementById('calcEquationDisplay');
+  const calcVelDisplay = document.getElementById('calcVelocityDisplay');
+  const calcAccDisplay = document.getElementById('calcAccelerationDisplay');
+
+  const valBox1Label = document.getElementById('valBox1Label');
+  const valBox1Val = document.getElementById('valBox1Val');
+  const valBox2Label = document.getElementById('valBox2Label');
+  const valBox2Val = document.getElementById('valBox2Val');
+  const valBox3Label = document.getElementById('valBox3Label');
+  const valBox3Val = document.getElementById('valBox3Val');
+  const valBox3Card = document.getElementById('valBox3Card');
+
+  const legCurve1 = document.getElementById('legCurve1');
+  const legCurve2 = document.getElementById('legCurve2');
+  const legCurve3 = document.getElementById('legCurve3');
+
+  const calcModeIndicator = document.getElementById('calcModeIndicator');
+  const calcStepsList = document.getElementById('calcStepsList');
+  const calcWhatsAppBtn = document.getElementById('calcWhatsAppBtn');
+  const calcResetBtn = document.getElementById('calcResetBtn');
+  const canvas = document.getElementById('calculusCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let currentMode = 'derivative'; // 'derivative' | 'integral'
+  let activePreset = 'freefall';
+
+  // Presets definition
+  const presets = {
+    freefall: {
+      mode: 'derivative',
+      A: 0,
+      B: -4.9,
+      C: 20.0,
+      D: 5.0,
+      t0: 2.0,
+      boundA: 0,
+      boundB: 4.0
+    },
+    shm: {
+      mode: 'derivative',
+      A: 0.2,
+      B: -2.0,
+      C: 0.0,
+      D: 8.0,
+      t0: 1.5,
+      boundA: 0,
+      boundB: 3.5
+    },
+    cubic: {
+      mode: 'derivative',
+      A: 0.6,
+      B: -2.4,
+      C: 3.5,
+      D: 1.0,
+      t0: 2.5,
+      boundA: 0,
+      boundB: 4.0
+    },
+    work: {
+      mode: 'integral',
+      A: 0,
+      B: 1.5,
+      C: 8.0,
+      D: 0,
+      t0: 2.0,
+      boundA: 0,
+      boundB: 3.0
+    }
+  };
+
+  // Two-way sync binding
+  function bindPair(slider, num, label, formatter) {
+    if (!slider || !num) return;
+    slider.addEventListener('input', () => {
+      num.value = slider.value;
+      if (label) label.textContent = formatter ? formatter(slider.value) : slider.value;
+      updateCalculator();
+    });
+    num.addEventListener('input', () => {
+      slider.value = num.value;
+      if (label) label.textContent = formatter ? formatter(num.value) : num.value;
+      updateCalculator();
+    });
+  }
+
+  bindPair(sliderA, numA, labelA);
+  bindPair(sliderB, numB, labelB);
+  bindPair(sliderC, numC, labelC);
+  bindPair(sliderD, numD, labelD);
+  bindPair(sliderT0, numT0, labelT0, val => parseFloat(val).toFixed(1) + (currentMode === 'derivative' ? ' s' : ' m'));
+
+  if (numBoundA && numBoundB) {
+    numBoundA.addEventListener('input', updateCalculator);
+    numBoundB.addEventListener('input', updateCalculator);
+  }
+
+  // Format polynomial string: f(t) = At³ + Bt² + Ct + D
+  function formatPoly(a, b, c, d, v = 't') {
+    const parts = [];
+    if (Math.abs(a) > 0.001) parts.push(`${a > 0 && parts.length ? '+ ' : ''}${a === 1 ? '' : a === -1 ? '-' : a}${v}³`);
+    if (Math.abs(b) > 0.001) parts.push(`${b > 0 && parts.length ? '+ ' : b < 0 && parts.length ? '- ' : b < 0 ? '-' : ''}${Math.abs(b) === 1 && parts.length ? '' : Math.abs(b)}${v}²`);
+    if (Math.abs(c) > 0.001) parts.push(`${c > 0 && parts.length ? '+ ' : c < 0 && parts.length ? '- ' : c < 0 ? '-' : ''}${Math.abs(c) === 1 && parts.length ? '' : Math.abs(c)}${v}`);
+    if (Math.abs(d) > 0.001 || parts.length === 0) parts.push(`${d > 0 && parts.length ? '+ ' : d < 0 && parts.length ? '- ' : d < 0 ? '-' : ''}${Math.abs(d)}`);
+    return parts.join(' ');
+  }
+
+  // Format first derivative: 3At² + 2Bt + C
+  function formatDeriv(a, b, c, v = 't') {
+    const da = 3 * a;
+    const db = 2 * b;
+    const dc = c;
+    const parts = [];
+    if (Math.abs(da) > 0.001) parts.push(`${da > 0 && parts.length ? '+ ' : ''}${da === 1 ? '' : da === -1 ? '-' : da.toFixed(1)}${v}²`);
+    if (Math.abs(db) > 0.001) parts.push(`${db > 0 && parts.length ? '+ ' : db < 0 && parts.length ? '- ' : db < 0 ? '-' : ''}${Math.abs(db).toFixed(1)}${v}`);
+    if (Math.abs(dc) > 0.001 || parts.length === 0) parts.push(`${dc > 0 && parts.length ? '+ ' : dc < 0 && parts.length ? '- ' : dc < 0 ? '-' : ''}${Math.abs(dc).toFixed(1)}`);
+    return parts.join(' ');
+  }
+
+  // Format second derivative: 6At + 2B
+  function formatSecDeriv(a, b, v = 't') {
+    const d2a = 6 * a;
+    const d2b = 2 * b;
+    const parts = [];
+    if (Math.abs(d2a) > 0.001) parts.push(`${d2a > 0 && parts.length ? '+ ' : ''}${d2a.toFixed(1)}${v}`);
+    if (Math.abs(d2b) > 0.001 || parts.length === 0) parts.push(`${d2b > 0 && parts.length ? '+ ' : d2b < 0 && parts.length ? '- ' : d2b < 0 ? '-' : ''}${Math.abs(d2b).toFixed(1)}`);
+    return parts.join(' ');
+  }
+
+  // Format indefinite integral: (A/4)x⁴ + (B/3)x³ + (C/2)x² + Dx + C₀
+  function formatInteg(a, b, c, d, v = 'x') {
+    const parts = [];
+    if (Math.abs(a) > 0.001) parts.push(`${(a / 4).toFixed(2)}${v}⁴`);
+    if (Math.abs(b) > 0.001) {
+      const coeff = b / 3;
+      parts.push(`${coeff > 0 && parts.length ? '+ ' : coeff < 0 && parts.length ? '- ' : ''}${Math.abs(coeff).toFixed(2)}${v}³`);
+    }
+    if (Math.abs(c) > 0.001) {
+      const coeff = c / 2;
+      parts.push(`${coeff > 0 && parts.length ? '+ ' : coeff < 0 && parts.length ? '- ' : ''}${Math.abs(coeff).toFixed(2)}${v}²`);
+    }
+    if (Math.abs(d) > 0.001) {
+      parts.push(`${d > 0 && parts.length ? '+ ' : d < 0 && parts.length ? '- ' : ''}${Math.abs(d).toFixed(1)}${v}`);
+    }
+    parts.push('+ C₀');
+    return parts.join(' ');
+  }
+
+  function evaluateF(a, b, c, d, t) {
+    return a * Math.pow(t, 3) + b * Math.pow(t, 2) + c * t + d;
+  }
+
+  function evaluateFPrime(a, b, c, t) {
+    return 3 * a * Math.pow(t, 2) + 2 * b * t + c;
+  }
+
+  function evaluateFDoublePrime(a, b, t) {
+    return 6 * a * t + 2 * b;
+  }
+
+  function evaluateIntegralAt(a, b, c, d, t) {
+    return (a / 4) * Math.pow(t, 4) + (b / 3) * Math.pow(t, 3) + (c / 2) * Math.pow(t, 2) + d * t;
+  }
+
+  function switchMode(newMode) {
+    currentMode = newMode;
+    if (newMode === 'derivative') {
+      modeDerivativeBtn.classList.add('active');
+      modeDerivativeBtn.setAttribute('aria-selected', 'true');
+      modeIntegralBtn.classList.remove('active');
+      modeIntegralBtn.setAttribute('aria-selected', 'false');
+
+      funcCoeffTitle.innerHTML = 'Function Coefficients: <em>x(t) = A t³ + B t² + C t + D</em>';
+      evalParamTitle.innerHTML = 'Evaluation Instant (<em>t = t₀</em>)';
+      evalParamSubtitle.textContent = 'Time Instant t';
+      integralLimitsGroup.style.display = 'none';
+
+      valBox1Label.textContent = 'Position x(t)';
+      valBox2Label.textContent = 'Velocity v(t) = dx/dt';
+      valBox3Label.textContent = 'Acceleration a(t) = d²x/dt²';
+      valBox3Card.className = 'calc-val-box acc';
+
+      legCurve1.textContent = 'x(t) Position';
+      legCurve2.textContent = 'v(t) Velocity';
+      legCurve3.textContent = 'a(t) Accel';
+      legCurve3.parentElement.style.display = 'inline-flex';
+    } else {
+      modeIntegralBtn.classList.add('active');
+      modeIntegralBtn.setAttribute('aria-selected', 'true');
+      modeDerivativeBtn.classList.remove('active');
+      modeDerivativeBtn.setAttribute('aria-selected', 'false');
+
+      funcCoeffTitle.innerHTML = 'Variable Force Function: <em>F(x) = A x³ + B x² + C x + D</em>';
+      evalParamTitle.innerHTML = 'Evaluation Position (<em>x = x₀</em>)';
+      evalParamSubtitle.textContent = 'Position x';
+      integralLimitsGroup.style.display = 'block';
+
+      valBox1Label.textContent = 'Instant Force F(x₀)';
+      valBox2Label.textContent = 'Definite Work W = ∫ F dx';
+      valBox3Label.textContent = 'Average Force F_avg';
+      valBox3Card.className = 'calc-val-box work';
+
+      legCurve1.textContent = 'F(x) Force';
+      legCurve2.textContent = 'W(x) Integral';
+      legCurve3.parentElement.style.display = 'none';
+    }
+    updateCalculator();
+  }
+
+  modeDerivativeBtn.addEventListener('click', () => switchMode('derivative'));
+  modeIntegralBtn.addEventListener('click', () => switchMode('integral'));
+
+  // Preset buttons handler
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      presetBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const pKey = btn.getAttribute('data-preset');
+      const p = presets[pKey];
+      if (!p) return;
+
+      activePreset = pKey;
+      if (currentMode !== p.mode) {
+        switchMode(p.mode);
+      }
+
+      sliderA.value = p.A; numA.value = p.A; if (labelA) labelA.textContent = p.A;
+      sliderB.value = p.B; numB.value = p.B; if (labelB) labelB.textContent = p.B;
+      sliderC.value = p.C; numC.value = p.C; if (labelC) labelC.textContent = p.C;
+      sliderD.value = p.D; numD.value = p.D; if (labelD) labelD.textContent = p.D;
+      sliderT0.value = p.t0; numT0.value = p.t0; if (labelT0) labelT0.textContent = p.t0.toFixed(1) + (p.mode === 'derivative' ? ' s' : ' m');
+      if (numBoundA) numBoundA.value = p.boundA;
+      if (numBoundB) numBoundB.value = p.boundB;
+
+      updateCalculator();
+    });
+  });
+
+  // Reset default button
+  if (calcResetBtn) {
+    calcResetBtn.addEventListener('click', () => {
+      const firstPreset = container.querySelector('.calc-preset-btn[data-preset="freefall"]');
+      if (firstPreset) firstPreset.click();
+    });
+  }
+
+  // Main calculation & rendering function
+  function updateCalculator() {
+    const a = parseFloat(numA.value) || 0;
+    const b = parseFloat(numB.value) || 0;
+    const c = parseFloat(numC.value) || 0;
+    const d = parseFloat(numD.value) || 0;
+    const t0 = parseFloat(numT0.value) || 0;
+    const boundA = numBoundA ? parseFloat(numBoundA.value) || 0 : 0;
+    const boundB = numBoundB ? parseFloat(numBoundB.value) || 3 : 3;
+
+    if (labelA) labelA.textContent = a.toFixed(1);
+    if (labelB) labelB.textContent = b.toFixed(1);
+    if (labelC) labelC.textContent = c.toFixed(1);
+    if (labelD) labelD.textContent = d.toFixed(1);
+    if (labelT0) labelT0.textContent = t0.toFixed(1) + (currentMode === 'derivative' ? ' s' : ' m');
+    if (labelBounds) labelBounds.textContent = `[${boundA.toFixed(1)}, ${boundB.toFixed(1)}] ${currentMode === 'derivative' ? 's' : 'm'}`;
+
+    if (currentMode === 'derivative') {
+      // Derivatives
+      const polyStr = formatPoly(a, b, c, d, 't');
+      const velStr = formatDeriv(a, b, c, 't');
+      const accStr = formatSecDeriv(a, b, 't');
+
+      calcEqDisplay.textContent = `x(t) = ${polyStr}`;
+      calcVelDisplay.textContent = `v(t) = dx/dt = ${velStr}`;
+      calcAccDisplay.textContent = `a(t) = d²x/dt² = ${accStr}`;
+
+      const posVal = evaluateF(a, b, c, d, t0);
+      const velVal = evaluateFPrime(a, b, c, t0);
+      const accVal = evaluateFDoublePrime(a, b, t0);
+
+      valBox1Val.textContent = (posVal >= 0 ? '+' : '') + posVal.toFixed(2) + ' m';
+      valBox2Val.textContent = (velVal >= 0 ? '+' : '') + velVal.toFixed(2) + ' m/s';
+      valBox3Val.textContent = (accVal >= 0 ? '+' : '') + accVal.toFixed(2) + ' m/s²';
+
+      calcModeIndicator.textContent = 'Power Rule & Tangent Slope';
+
+      // Physical Insights
+      let motionDirection = velVal > 0.05 ? 'Moving in positive direction (upward/forward)' : velVal < -0.05 ? 'Moving in negative direction (downward/backward)' : 'Instantaneously at rest (turning point)';
+      let speedChange = Math.sign(velVal) === Math.sign(accVal) && Math.abs(velVal) > 0.05 ? 'Speed is increasing (accelerating in direction of motion).' : Math.sign(velVal) !== Math.sign(accVal) && Math.abs(velVal) > 0.05 ? 'Speed is decreasing (decelerating / retarding).' : 'Constant velocity or zero velocity instant.';
+      
+      let apexText = '';
+      if (Math.abs(a) < 0.001 && Math.abs(b) > 0.001) {
+        const tApex = -c / (2 * b);
+        if (tApex >= 0) {
+          apexText = `<li><strong>Apex / Peak Point:</strong> Velocity <em>v(t) = 0</em> occurs at <em>t = -v₀ / (2B) = ${tApex.toFixed(2)}s</em> with max displacement <em>x_max = ${evaluateF(a, b, c, d, tApex).toFixed(2)}m</em>.</li>`;
+        }
+      }
+
+      calcStepsList.innerHTML = `
+        <li><strong>Velocity as Slope:</strong> At <em>t = ${t0.toFixed(1)}s</em>, the instantaneous rate of change is <em>v(${t0.toFixed(1)}) = ${velVal.toFixed(2)} m/s</em>. State: ${motionDirection}.</li>
+        <li><strong>Acceleration as Curvature:</strong> The second derivative <em>a(${t0.toFixed(1)}) = ${accVal.toFixed(2)} m/s²</em>. ${speedChange}</li>
+        ${apexText}
+        <li><strong>AP/IB Physics Exam Tip:</strong> Remember that speed is |v(t)|. When velocity and acceleration have opposite signs, the particle is slowing down!</li>
+      `;
+
+      // WhatsApp Button URL
+      const msg = `Hi Vikash Sir, I am testing the AceYourPhysics Calculus Solver for motion equation: x(t) = ${polyStr} at t=${t0.toFixed(1)}s (v=${velVal.toFixed(2)} m/s, a=${accVal.toFixed(2)} m/s²). Could you please help me understand this derivation?`;
+      calcWhatsAppBtn.href = `https://wa.me/919617445950?text=${encodeURIComponent(msg)}`;
+
+    } else {
+      // Integrals
+      const polyStr = formatPoly(a, b, c, d, 'x');
+      const intStr = formatInteg(a, b, c, d, 'x');
+      const intA = evaluateIntegralAt(a, b, c, d, boundA);
+      const intB = evaluateIntegralAt(a, b, c, d, boundB);
+      const defInt = intB - intA;
+      const interval = Math.abs(boundB - boundA) || 1;
+      const avgF = defInt / interval;
+
+      calcEqDisplay.textContent = `F(x) = ${polyStr}`;
+      calcVelDisplay.textContent = `W(x) = ∫ F(x) dx = ${intStr}`;
+      calcAccDisplay.textContent = `Definite Work W = ∫₍${boundA.toFixed(1)}₎⁽${boundB.toFixed(1)}⁾ F(x) dx = ${defInt.toFixed(2)} J`;
+
+      const forceAtT0 = evaluateF(a, b, c, d, t0);
+      valBox1Val.textContent = (forceAtT0 >= 0 ? '+' : '') + forceAtT0.toFixed(2) + ' N';
+      valBox2Val.textContent = (defInt >= 0 ? '+' : '') + defInt.toFixed(2) + ' J';
+      valBox3Val.textContent = (avgF >= 0 ? '+' : '') + avgF.toFixed(2) + ' N';
+
+      calcModeIndicator.textContent = 'Definite Integration & Work-Energy';
+
+      calcStepsList.innerHTML = `
+        <li><strong>Definite Integral as Work Done:</strong> <em>W = ∫ F(x) dx = [W(x)] = ${defInt.toFixed(2)} Joules</em>. This represents the shaded area under the curve!</li>
+        <li><strong>Work-Energy Theorem:</strong> Net work done equals change in kinetic energy: <em>W_net = ΔK = ½m v_f² - ½m v_i²</em>.</li>
+        <li><strong>Average Force:</strong> <em>F_avg = W / (b - a) = ${defInt.toFixed(2)} / ${interval.toFixed(1)} = ${avgF.toFixed(2)} N</em>.</li>
+      `;
+
+      // WhatsApp Button URL
+      const msg = `Hi Vikash Sir, I am testing the AceYourPhysics Calculus Solver for work integral: F(x) = ${polyStr} from x=${boundA.toFixed(1)} to ${boundB.toFixed(1)} (Work = ${defInt.toFixed(2)} J). Could you please help explain how to solve this on past papers?`;
+      calcWhatsAppBtn.href = `https://wa.me/919617445950?text=${encodeURIComponent(msg)}`;
+    }
+
+    drawGraph(a, b, c, d, t0, boundA, boundB);
+  }
+
+  // Draw Graph on Canvas
+  function drawGraph(a, b, c, d, t0, boundA, boundB) {
+    const parent = canvas.parentElement;
+    if (!parent) return;
+
+    const rect = parent.getBoundingClientRect();
+    const width = rect.width || 700;
+    const height = 270;
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.resetTransform();
+    ctx.scale(dpr, dpr);
+
+    const isLight = document.body.classList.contains('light-theme');
+    const bgColor = isLight ? '#ffffff' : '#090e1c';
+    const gridColor = isLight ? 'rgba(15, 23, 42, 0.08)' : 'rgba(148, 163, 184, 0.12)';
+    const axisColor = isLight ? '#94a3b8' : '#475569';
+    const textColor = isLight ? '#475569' : '#94a3b8';
+
+    // Clear background
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, width, height);
+
+    // Coordinate domain: t from 0 to tMax
+    const tMin = 0;
+    const tMax = Math.max(5.0, boundB + 0.8, t0 + 0.8);
+
+    // Padding
+    const padL = 46;
+    const padR = 20;
+    const padT = 20;
+    const padB = 30;
+    const plotW = width - padL - padR;
+    const plotH = height - padT - padB;
+
+    // Sample points to find y domain
+    const steps = 100;
+    let yMin = Infinity;
+    let yMax = -Infinity;
+
+    for (let i = 0; i <= steps; i++) {
+      const t = tMin + (i / steps) * (tMax - tMin);
+      const y1 = evaluateF(a, b, c, d, t);
+      const y2 = currentMode === 'derivative' ? evaluateFPrime(a, b, c, t) : evaluateIntegralAt(a, b, c, d, t);
+      if (isFinite(y1)) { yMin = Math.min(yMin, y1); yMax = Math.max(yMax, y1); }
+      if (isFinite(y2)) { yMin = Math.min(yMin, y2); yMax = Math.max(yMax, y2); }
+    }
+
+    if (!isFinite(yMin) || !isFinite(yMax) || yMin === yMax) {
+      yMin = -10;
+      yMax = 30;
+    }
+
+    // Always include zero in y domain for clear reference
+    yMin = Math.min(0, yMin);
+    yMax = Math.max(0, yMax);
+    const ySpan = (yMax - yMin) || 1;
+    yMin -= ySpan * 0.12;
+    yMax += ySpan * 0.12;
+
+    function toPxX(t) {
+      return padL + ((t - tMin) / (tMax - tMin)) * plotW;
+    }
+    function toPxY(y) {
+      return padT + plotH - ((y - yMin) / (yMax - yMin)) * plotH;
+    }
+
+    // Draw Grid Lines
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = gridColor;
+
+    // Horizontal grid lines
+    const yStepsCount = 5;
+    ctx.fillStyle = textColor;
+    ctx.font = '10px JetBrains Mono, monospace';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+
+    for (let i = 0; i <= yStepsCount; i++) {
+      const yVal = yMin + (i / yStepsCount) * (yMax - yMin);
+      const py = toPxY(yVal);
+      ctx.beginPath();
+      ctx.moveTo(padL, py);
+      ctx.lineTo(width - padR, py);
+      ctx.stroke();
+      ctx.fillText(yVal.toFixed(0), padL - 8, py);
+    }
+
+    // Vertical grid lines
+    const xStepsCount = 6;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+
+    for (let i = 0; i <= xStepsCount; i++) {
+      const tVal = tMin + (i / xStepsCount) * (tMax - tMin);
+      const px = toPxX(tVal);
+      ctx.beginPath();
+      ctx.moveTo(px, padT);
+      ctx.lineTo(px, height - padB);
+      ctx.stroke();
+      ctx.fillText(tVal.toFixed(1) + (currentMode === 'derivative' ? 's' : 'm'), px, height - padB + 6);
+    }
+
+    // Zero Baseline Axis
+    const zeroY = toPxY(0);
+    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = axisColor;
+    ctx.beginPath();
+    ctx.moveTo(padL, zeroY);
+    ctx.lineTo(width - padR, zeroY);
+    ctx.stroke();
+
+    // In Integral Mode: Shade the Definite Integral Area between boundA and boundB
+    if (currentMode === 'integral' && boundB > boundA) {
+      const bMin = Math.max(tMin, Math.min(boundA, boundB));
+      const bMax = Math.min(tMax, Math.max(boundA, boundB));
+      const areaSteps = 60;
+
+      ctx.beginPath();
+      ctx.moveTo(toPxX(bMin), zeroY);
+      for (let i = 0; i <= areaSteps; i++) {
+        const curX = bMin + (i / areaSteps) * (bMax - bMin);
+        ctx.lineTo(toPxX(curX), toPxY(evaluateF(a, b, c, d, curX)));
+      }
+      ctx.lineTo(toPxX(bMax), zeroY);
+      ctx.closePath();
+
+      const grad = ctx.createLinearGradient(0, padT, 0, height - padB);
+      grad.addColorStop(0, 'rgba(56, 189, 248, 0.45)');
+      grad.addColorStop(1, 'rgba(56, 189, 248, 0.08)');
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Bound markers
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath();
+      ctx.moveTo(toPxX(bMin), zeroY);
+      ctx.lineTo(toPxX(bMin), toPxY(evaluateF(a, b, c, d, bMin)));
+      ctx.moveTo(toPxX(bMax), zeroY);
+      ctx.lineTo(toPxX(bMax), toPxY(evaluateF(a, b, c, d, bMax)));
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // Curve 1: f(t) or F(x) in Blue / Sky Blue
+    ctx.lineWidth = 2.8;
+    ctx.strokeStyle = isLight ? '#0284c7' : '#38bdf8';
+    ctx.beginPath();
+    for (let i = 0; i <= steps; i++) {
+      const t = tMin + (i / steps) * (tMax - tMin);
+      const px = toPxX(t);
+      const py = toPxY(evaluateF(a, b, c, d, t));
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+
+    // Curve 2: v(t) or W(x) in Emerald (#10b981)
+    ctx.lineWidth = 2.2;
+    ctx.strokeStyle = isLight ? '#059669' : '#34d399';
+    ctx.beginPath();
+    for (let i = 0; i <= steps; i++) {
+      const t = tMin + (i / steps) * (tMax - tMin);
+      const px = toPxX(t);
+      const py = toPxY(currentMode === 'derivative' ? evaluateFPrime(a, b, c, t) : evaluateIntegralAt(a, b, c, d, t));
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+
+    // In Derivative Mode: Curve 3: a(t) in Amber (#f59e0b)
+    if (currentMode === 'derivative') {
+      ctx.lineWidth = 1.8;
+      ctx.strokeStyle = isLight ? '#d97706' : '#fbbf24';
+      ctx.setLineDash([5, 4]);
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const t = tMin + (i / steps) * (tMax - tMin);
+        const px = toPxX(t);
+        const py = toPxY(evaluateFDoublePrime(a, b, t));
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Draw Tangent Line at t = t0 on x(t)
+      const ptx = toPxX(t0);
+      const pty = toPxY(evaluateF(a, b, c, d, t0));
+      const slope = evaluateFPrime(a, b, c, t0);
+
+      // Tangent line endpoints
+      const dt = 0.8;
+      const tLeft = Math.max(tMin, t0 - dt);
+      const tRight = Math.min(tMax, t0 + dt);
+      const yLeft = evaluateF(a, b, c, d, t0) - slope * (t0 - tLeft);
+      const yRight = evaluateF(a, b, c, d, t0) + slope * (tRight - t0);
+
+      ctx.lineWidth = 2.0;
+      ctx.strokeStyle = isLight ? '#0284c7' : '#7dd3fc';
+      ctx.beginPath();
+      ctx.moveTo(toPxX(tLeft), toPxY(yLeft));
+      ctx.lineTo(toPxX(tRight), toPxY(yRight));
+      ctx.stroke();
+
+      // Dot at (t0, x(t0))
+      ctx.beginPath();
+      ctx.arc(ptx, pty, 6, 0, Math.PI * 2);
+      ctx.fillStyle = '#38bdf8';
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+
+      // Vertical guide to axis
+      ctx.setLineDash([3, 3]);
+      ctx.strokeStyle = isLight ? 'rgba(2, 132, 199, 0.4)' : 'rgba(56, 189, 248, 0.6)';
+      ctx.beginPath();
+      ctx.moveTo(ptx, pty);
+      ctx.lineTo(ptx, zeroY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+  }
+
+  // Handle Resize and Theme Change
+  window.addEventListener('resize', () => {
+    updateCalculator();
+  });
+
+  document.addEventListener('themeChanged', () => {
+    updateCalculator();
+  });
+
+  // Initial Calculation
+  updateCalculator();
 }
 

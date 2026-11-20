@@ -3590,5 +3590,397 @@ body.light-theme .review-student-tag {
   font-size: 1rem;
 }
 
+/* ==========================================================================
+   INTERACTIVE CALCULUS & PHYSICS SOLVER (CALCULATOR)
+   ========================================================================== */
+.calc-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  padding: 32px;
+}
+
+.calc-header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.calc-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.calc-mode-btn {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calc-mode-btn:hover {
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.calc-mode-btn.active {
+  background: var(--accent-blue);
+  color: #040914;
+  border-color: var(--accent-blue);
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 28px;
+}
+
+@media (max-width: 992px) {
+  .calc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calc-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.calc-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.calc-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+}
+
+.calc-preset-btns {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.calc-preset-btn {
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  color: #7dd3fc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.calc-preset-btn:hover,
+.calc-preset-btn.active {
+  background: rgba(56, 189, 248, 0.22);
+  color: #ffffff;
+  border-color: var(--accent-blue);
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.2);
+}
+
+.calc-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.calc-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calc-row-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.calc-row-inputs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calc-number-input {
+  width: 90px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: rgba(10, 16, 32, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
+.calc-slider {
+  flex: 1;
+  accent-color: var(--accent-blue);
+}
+
+.calc-output-hero {
+  background: rgba(10, 16, 32, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.calc-equation-display {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 12px;
+  word-break: break-word;
+}
+
+.calc-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+@media (max-width: 600px) {
+  .calc-values-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calc-val-box {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calc-val-box span {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.calc-val-box strong {
+  font-size: 1.15rem;
+  font-family: var(--font-mono);
+  color: #ffffff;
+}
+
+.calc-val-box.pos strong { color: #38bdf8; }
+.calc-val-box.vel strong { color: #34d399; }
+.calc-val-box.acc strong { color: #fbbf24; }
+.calc-val-box.work strong { color: #c084fc; }
+
+.calc-graph-wrap {
+  position: relative;
+  background: #090e1c;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 270px;
+}
+
+.calc-graph-wrap canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.calc-graph-legend {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.calc-legend-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.calc-steps-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.calc-steps-card ul {
+  margin: 8px 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Light Theme Overrides for Calculus Calculator */
+body.light-theme .calc-container {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+body.light-theme .calc-header-nav {
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+body.light-theme .calc-mode-btn {
+  background: #f1f5f9;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #475569;
+}
+
+body.light-theme .calc-mode-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+body.light-theme .calc-mode-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+body.light-theme .calc-card {
+  background: #f8fafc;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+body.light-theme .calc-card-title {
+  color: #0f172a;
+}
+
+body.light-theme .calc-preset-btn {
+  background: #e0f2fe;
+  border-color: #bae6fd;
+  color: #0369a1;
+}
+
+body.light-theme .calc-preset-btn:hover,
+body.light-theme .calc-preset-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+body.light-theme .calc-row-head {
+  color: #1e293b;
+}
+
+body.light-theme .calc-number-input {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.18);
+  color: #0f172a;
+}
+
+body.light-theme .calc-output-hero {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+body.light-theme .calc-equation-display {
+  color: #0284c7;
+}
+
+body.light-theme .calc-val-box {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+body.light-theme .calc-val-box span {
+  color: #64748b;
+}
+
+body.light-theme .calc-val-box strong {
+  color: #0f172a;
+}
+
+body.light-theme .calc-val-box.pos strong { color: #0284c7; }
+body.light-theme .calc-val-box.vel strong { color: #059669; }
+body.light-theme .calc-val-box.acc strong { color: #d97706; }
+body.light-theme .calc-val-box.work strong { color: #7c3aed; }
+
+body.light-theme .calc-graph-wrap {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+body.light-theme .calc-graph-legend {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #334155;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+body.light-theme .calc-steps-card {
+  background: #f8fafc;
+  border-color: rgba(15, 23, 42, 0.1);
+  color: #334155;
+}
+
+body.light-theme .calc-steps-card strong {
+  color: #0f172a;
+}
+
+body.light-theme .calc-steps-card > div:first-child,
+body.light-theme .calc-steps-card > div:first-child span:first-child {
+  color: #0f172a !important;
+}
+
+
 
 
