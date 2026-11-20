@@ -530,25 +530,66 @@ body.light-theme .hero-pill {
 
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-top: 18px;
-  padding-top: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 22px;
   border-top: 1px solid var(--border-subtle);
 }
 
-.stat-item h4 {
-  font-size: 2.1rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.stat-item {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
+.stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--stat-accent, #38bdf8);
+}
+
+.stat-item:nth-child(1) { --stat-accent: #38bdf8; }
+.stat-item:nth-child(2) { --stat-accent: #34d399; }
+.stat-item:nth-child(3) { --stat-accent: #818cf8; }
+.stat-item:nth-child(4) { --stat-accent: #fbbf24; }
+
+.stat-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+.stat-item h4 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 5px;
+}
+
+.stat-item:nth-child(1) h4 { color: #38bdf8; }
+.stat-item:nth-child(2) h4 { color: #34d399; }
+.stat-item:nth-child(3) h4 { color: #818cf8; }
+.stat-item:nth-child(4) h4 { color: #fbbf24; }
+
 .stat-item p {
-  font-size: 0.88rem;
-  color: #94a3b8;
-  margin-top: 2px;
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  line-height: 1.35;
+  font-weight: 500;
+  margin: 0;
 }
 
 /* Hero Visual / Teacher Card */
@@ -1349,16 +1390,6 @@ body.light-theme .hero-pill {
   border: 1px solid rgba(56, 189, 248, 0.35);
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
 }
-  border-radius: 12px;
-  background: rgba(56, 189, 248, 0.1);
-  color: var(--accent-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-  border: 1px solid rgba(56, 189, 248, 0.2);
-}
 
 .feature-box h4 {
   font-size: 1.2rem;
@@ -2079,7 +2110,9 @@ body.light-theme .hero-pill {
 
   .hero-stats {
     width: 100%;
-    max-width: 500px;
+    max-width: 540px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 24px auto 0;
   }
 
   .about-grid {
@@ -2127,6 +2160,22 @@ body.light-theme .hero-pill {
 
   .mobile-toggle {
     display: block;
+  }
+
+  .hero-stats {
+    gap: 8px;
+  }
+
+  .stat-item {
+    padding: 12px 10px;
+  }
+
+  .stat-item h4 {
+    font-size: 1.55rem;
+  }
+
+  .stat-item p {
+    font-size: 0.74rem;
   }
 
   .courses-grid {
@@ -2817,15 +2866,35 @@ body.light-theme .close-modal:hover {
 }
 
 body.light-theme .hero-stats {
-  border-top-color: rgba(15, 23, 42, 0.12);
+  border-top-color: rgba(15, 23, 42, 0.08);
+}
+
+body.light-theme .stat-item {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+body.light-theme .stat-item:hover {
+  border-color: #0284c7;
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.12);
 }
 
 body.light-theme .stat-item h4 {
-  color: #0f172a;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  font-weight: 900 !important;
 }
 
+body.light-theme .stat-item:nth-child(1) h4 { color: #0284c7 !important; }
+body.light-theme .stat-item:nth-child(2) h4 { color: #059669 !important; }
+body.light-theme .stat-item:nth-child(3) h4 { color: #3730a3 !important; }
+body.light-theme .stat-item:nth-child(4) h4 { color: #b45309 !important; }
+
 body.light-theme .stat-item p {
-  color: #64748b;
+  color: #1e293b !important;
+  font-weight: 600 !important;
 }
 
 body.light-theme .cred-pill {
