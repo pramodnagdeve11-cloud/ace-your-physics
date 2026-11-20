@@ -252,6 +252,19 @@ body.light-theme .top-announcement {
   color: #0f172a;
 }
 
+body.light-theme .announcement-pill {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+body.light-theme .announcement-link {
+  color: #0284c7;
+}
+
+body.light-theme .announcement-link:hover {
+  color: #0369a1;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -2363,8 +2376,10 @@ body.light-theme {
   --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.15);
 }
 
+html.light-theme,
 body.light-theme {
   color: #0f172a;
+  background-color: #ffffff !important;
 }
 
 body.light-theme .bg-mesh {
