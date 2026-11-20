@@ -49,9 +49,9 @@ function initThemeToggle() {
     });
   }
 
-  // Check saved theme in localStorage
+  // Check saved theme in localStorage (defaults to light theme like AP Guru)
   const savedTheme = localStorage.getItem('ayp_theme');
-  const isCurrentlyLight = savedTheme === 'light';
+  const isCurrentlyLight = savedTheme !== 'dark';
   applyTheme(isCurrentlyLight);
 
   toggleBtns.forEach(btn => {
@@ -117,8 +117,9 @@ function initCurriculumFilter() {
       const filter = btn.getAttribute('data-filter');
 
       courseCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
+        const categoryAttr = card.getAttribute('data-category') || '';
+        const categories = categoryAttr.split(/\s+/);
+        if (filter === 'all' || categories.includes(filter)) {
           card.style.display = 'flex';
           card.style.animation = 'fadeIn 0.3s ease forwards';
         } else {
@@ -513,8 +514,8 @@ Thank you!`;
       modalContent.innerHTML = `
         <div style="text-align: center; padding: 20px 10px;">
           <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); color: #10b981; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 20px;">✓</div>
-          <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 12px;">Demo Class Request Received!</h3>
-          <p style="color: #94a3b8; font-size: 1rem; line-height: 1.6; max-width: 440px; margin: 0 auto 24px;">
+          <h3 class="modal-confirm-title" style="font-size: 1.6rem; margin-bottom: 12px;">Demo Class Request Received!</h3>
+          <p class="modal-confirm-desc" style="font-size: 1rem; line-height: 1.6; max-width: 440px; margin: 0 auto 24px;">
             Thank you, <strong>${name}</strong>. Vikash Sir will personally contact you on <strong>${phone}</strong> within a few hours to confirm your 1-on-1 trial slot.
           </p>
           <div style="display: flex; flex-direction: column; gap: 12px; max-width: 360px; margin: 0 auto;">

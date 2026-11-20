@@ -2889,3 +2889,358 @@ body.light-theme .floating-theme-toggle:hover {
   color: #0284c7;
   box-shadow: 0 14px 35px rgba(15, 23, 42, 0.18), 0 0 20px rgba(2, 132, 199, 0.2);
 }
+
+/* ==========================================================================
+   AP GURU STYLE ENHANCEMENTS: ROADMAP, UNI TICKER, NAV WHATSAPP
+   ========================================================================== */
+.btn-whatsapp-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25d366;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+}
+
+.btn-whatsapp-nav:hover {
+  background: #1eb855;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 900px) {
+  .btn-whatsapp-nav span {
+    display: none;
+  }
+  .btn-whatsapp-nav {
+    padding: 8px 10px;
+  }
+}
+
+/* University Target Ticker (AP Guru Style) */
+.uni-ticker-section {
+  padding: 24px 0 28px;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(15, 23, 42, 0.35);
+}
+
+.uni-ticker-label {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+
+.uni-ticker-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 16px;
+}
+
+.uni-pill {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.uni-pill:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+body.light-theme .uni-ticker-section {
+  background: #f8fafc;
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+body.light-theme .uni-ticker-label {
+  color: #64748b;
+}
+
+body.light-theme .uni-pill {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.1);
+  color: #1e293b;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+body.light-theme .uni-pill:hover {
+  border-color: #0284c7;
+}
+
+/* 4-Step Roadmap Section (AP Guru Style) */
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 36px;
+}
+
+@media (max-width: 1024px) {
+  .roadmap-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.roadmap-card {
+  background: linear-gradient(180deg, rgba(23, 34, 60, 0.75) 0%, rgba(13, 20, 38, 0.9) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: var(--radius-lg);
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: var(--transition);
+}
+
+.roadmap-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-blue);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 24px rgba(56, 189, 248, 0.2);
+}
+
+.roadmap-step-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  width: fit-content;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.roadmap-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+  line-height: 1.35;
+}
+
+.roadmap-card p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.roadmap-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+}
+
+body.light-theme .roadmap-card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+body.light-theme .roadmap-card:hover {
+  border-color: #0284c7;
+  box-shadow: 0 14px 32px rgba(2, 132, 199, 0.12);
+}
+
+body.light-theme .roadmap-step-badge {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+body.light-theme .roadmap-card h4 {
+  color: #0f172a;
+}
+
+body.light-theme .roadmap-card p {
+  color: #475569;
+}
+
+body.light-theme .roadmap-card-icon {
+  background: #e0f2fe;
+  border-color: #bae6fd;
+}
+
+/* ==========================================================================
+   AP GURU ENHANCEMENTS: TARGET SCORE BANNERS & ELITE TESTIMONIALS
+   ========================================================================== */
+.course-target-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+.course-target-banner.amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.course-target-banner.blue {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.course-target-banner.purple {
+  background: rgba(168, 85, 247, 0.12);
+  color: #c084fc;
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+body.light-theme .course-target-banner {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #86efac;
+}
+
+body.light-theme .course-target-banner.amber {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+body.light-theme .course-target-banner.blue {
+  background: #e0f2fe;
+  color: #0369a1;
+  border-color: #bae6fd;
+}
+
+body.light-theme .course-target-banner.purple {
+  background: #f3e8ff;
+  color: #7e22ce;
+  border-color: #d8b4fe;
+}
+
+/* AP Guru Testimonials Meta & Admission Tags */
+.test-header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.test-score-badge {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.16);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.32);
+  white-space: nowrap;
+}
+
+.test-admit-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 5px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+  width: fit-content;
+}
+
+.test-school {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 500;
+  display: block;
+  margin-top: 2px;
+}
+
+body.light-theme .test-score-badge {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #86efac;
+}
+
+body.light-theme .test-admit-tag {
+  color: #0369a1;
+  background: #e0f2fe;
+  border-color: #bae6fd;
+}
+
+body.light-theme .test-school {
+  color: #64748b;
+}
+
+body.light-theme .feature-box h4 {
+  color: #0f172a;
+}
+
+body.light-theme .feature-box p {
+  color: #475569;
+}
+
+body.light-theme .course-title-group h3 {
+  color: #0f172a;
+}
+
+.modal-confirm-title {
+  color: #ffffff;
+}
+
+.modal-confirm-desc {
+  color: #94a3b8;
+}
+
+body.light-theme .modal-confirm-title {
+  color: #0f172a;
+}
+
+body.light-theme .modal-confirm-desc {
+  color: #475569;
+}
+
+

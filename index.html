@@ -168,12 +168,12 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/logo-icon.png">
   
-  <!-- Immediate Theme Initializer to prevent light/dark flicker -->
+  <!-- Immediate Theme Initializer to prevent light/dark flicker (AP Guru clean light theme default) -->
   <script>
     (function() {
       try {
         var savedTheme = localStorage.getItem('ayp_theme');
-        if (savedTheme === 'light') {
+        if (savedTheme !== 'dark') {
           document.documentElement.classList.add('light-theme');
           document.body && document.body.classList.add('light-theme');
         }
@@ -186,11 +186,11 @@
   <!-- Ambient Backdrop -->
   <div class="bg-mesh"></div>
 
-  <!-- Top Announcement Bar -->
+  <!-- Top Announcement Bar (AP Guru Style) -->
   <div class="top-announcement">
     <div class="container top-announcement-inner">
-      <span class="announcement-pill">ADMISSIONS OPEN</span>
-      <span>🚀 Complimentary 1:1 Live Online Demo Session for CBSE, ICSE, Cambridge, AP & JEE/NEET</span>
+      <span class="announcement-pill">ADMISSIONS 2026–27</span>
+      <span>🚀 Complimentary 1:1 Diagnostic & Consultation for AP, IB, Cambridge, CBSE & JEE/NEET</span>
       <a href="#hero" class="open-demo-modal announcement-link">Claim Free Spot &rarr;</a>
     </div>
   </div>
@@ -206,22 +206,27 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#courses" class="nav-link">Curricula & Courses</a></li>
-        <li><a href="#about" class="nav-link">About Vikash Sir</a></li>
-        <li><a href="#visual-lab" class="nav-link">Visual Physics Lab</a></li>
+        <li><a href="#courses" class="nav-link">Programs</a></li>
+        <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
         <li><a href="#why-ayp" class="nav-link">Why Us</a></li>
+        <li><a href="#about" class="nav-link">About Vikash Sir</a></li>
+        <li><a href="#visual-lab" class="nav-link">Visual Lab</a></li>
         <li><a href="#concept-hub" class="nav-link">Concept Hub</a></li>
         <li><a href="#testimonials" class="nav-link">Results</a></li>
         <li><a href="#faq" class="nav-link">FAQ</a></li>
       </ul>
 
       <div class="nav-cta">
+        <a href="https://wa.me/919617445950?text=Hello%20Vikash%20Sir%2C%20I%20am%20interested%20in%20Ace%20Your%20Physics%20classes." target="_blank" class="btn-whatsapp-nav" aria-label="Chat on WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <span>WhatsApp</span>
+        </a>
         <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark and Light Mode" title="Theme badlo (Safed / Dark Mode)">
-          <span class="theme-icon">🌙</span>
-          <span class="theme-text">Dark</span>
+          <span class="theme-icon">☀️</span>
+          <span class="theme-text">Light</span>
         </button>
         <button class="btn btn-primary open-demo-modal">
-          <span>Book Free Demo</span>
+          <span>Book Free Consultation</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </div>
@@ -238,47 +243,51 @@
       <div class="hero-content">
         <div class="badge">
           <span class="badge-pulse"></span>
-          <span>1-on-1 Personalized Online Mentorship • PHYFIX</span>
+          <span>🎓 Top 1% Physics & Math Tutoring · 100% 1-on-1 Online Mentorship</span>
         </div>
 
         <h1 class="hero-title">
-          Master Physics with <span class="gradient-text">Intuitive Clarity</span>, Not Rote Learning.
+          Your Gateway to <span class="gradient-text">Top Physics Scores</span> & Elite Universities.
         </h1>
 
         <p class="hero-lead">
-          Welcome to <strong>PHYFIX</strong> (Ace Your Physics) — specialized 1-on-1 online coaching for <strong>Cambridge (IGCSE/A-Level), AP Physics, CBSE, ICSE, Maharashtra State Board, and JEE/NEET</strong> by master educator & researcher <strong>Vikash Hanwat</strong>. Transform complex physics into crystal-clear intuition.
+          Personalized 1-on-1 online mentorship by material science researcher & master educator <strong>Vikash Hanwat</strong> (7+ Yrs Exp). Tailored for students targeting <strong>5 on AP Physics, 7 in IB DP, 95%+ in CBSE/ICSE, and Top Percentiles in JEE & NEET</strong>. Experience conceptual intuition, not rote memorization.
         </p>
 
         <div class="hero-philosophy">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <strong>"Better Questions, Better Understanding"</strong> — Moving students systematically from <em>"Why is this so difficult?"</em> to <em>"I see how it works!"</em>
+            <strong>"Understand Deeply. Think Scientifically. Excel Confidently."</strong> — Moving students systematically from <em>"Why is this so difficult?"</em> to <em>"I see how it works!"</em>
           </div>
         </div>
 
         <div class="hero-actions">
           <button class="btn btn-primary open-demo-modal">
-            <span>Book a Free 1:1 Demo Class</span>
+            <span>Schedule a Free 1:1 Consultation</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <a href="#visual-lab" class="btn btn-secondary">
-            <span>Try Interactive Visual Lab</span>
+          <a href="#roadmap" class="btn btn-secondary">
+            <span>Our 4-Step Roadmap</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </a>
         </div>
 
         <div class="hero-stats">
           <div class="stat-item">
-            <h4>7+ Years</h4>
-            <p>Teaching Excellence</p>
+            <h4>500+</h4>
+            <p>Students Mentored Globally</p>
           </div>
           <div class="stat-item">
-            <h4>500+</h4>
-            <p>Global Students Mentored</p>
+            <h4>96%</h4>
+            <p>Top Scores (AP 5s / IB 7s)</p>
           </div>
           <div class="stat-item">
             <h4>100%</h4>
-            <p>1-on-1 Individual Attention</p>
+            <p>1-on-1 Personal Attention</p>
+          </div>
+          <div class="stat-item">
+            <h4>24/7</h4>
+            <p>WhatsApp Doubt Support</p>
           </div>
         </div>
 
@@ -343,17 +352,87 @@
     <div class="container">
       <div class="ticker-label">Specialized Curricula & Exam Boards Supported Globally</div>
       <div class="ticker-grid">
+        <span class="board-tag">AP Physics 1, 2, C</span>
+        <span class="board-tag">IB DP Physics HL & SL</span>
+        <span class="board-tag">Cambridge IGCSE</span>
+        <span class="board-tag">Cambridge A / AS Levels</span>
         <span class="board-tag">CBSE (Class 9 - 12)</span>
         <span class="board-tag">ICSE & ISC Physics</span>
         <span class="board-tag">Maharashtra State Board</span>
-        <span class="board-tag">Cambridge IGCSE</span>
-        <span class="board-tag">Cambridge A / AS Levels</span>
-        <span class="board-tag">AP Physics (1, 2, C)</span>
-        <span class="board-tag">AP Calculus</span>
+        <span class="board-tag">AP Calculus (AB / BC)</span>
         <span class="board-tag">JEE Main & Advanced</span>
         <span class="board-tag">NEET UG Physics</span>
         <span class="board-tag">MHT-CET Physics</span>
-        <span class="board-tag">Foundation Science (9–10)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TARGET UNIVERSITIES TICKER (AP GURU STYLE)
+       ========================================================================== -->
+  <section class="uni-ticker-section">
+    <div class="container">
+      <div class="uni-ticker-label">🎓 Students Mentored for Top Scores & Admissions into Leading Global Universities:</div>
+      <div class="uni-ticker-grid">
+        <span class="uni-pill">🏛️ MIT</span>
+        <span class="uni-pill">🏛️ Stanford University</span>
+        <span class="uni-pill">🏛️ Harvard University</span>
+        <span class="uni-pill">🏛️ Cambridge University</span>
+        <span class="uni-pill">🏛️ Oxford University</span>
+        <span class="uni-pill">🏛️ UC Berkeley</span>
+        <span class="uni-pill">🏛️ Imperial College London</span>
+        <span class="uni-pill">🏛️ IIT Bombay & Delhi</span>
+        <span class="uni-pill">🏛️ NUS Singapore</span>
+        <span class="uni-pill">🏛️ Columbia University</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       THE 4-STEP STUDENT SUCCESS ROADMAP (AP GURU SIGNATURE METHODOLOGY)
+       ========================================================================== -->
+  <section class="section" id="roadmap">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span>Structured Methodology</span>
+        </div>
+        <h2>The 4-Step <span class="gradient-text">Student Success Roadmap</span></h2>
+        <p>How we systematically transition students from concept anxiety to top exam percentiles and elite university admissions.</p>
+      </div>
+
+      <div class="roadmap-grid">
+        <!-- Step 1 -->
+        <div class="roadmap-card">
+          <div class="roadmap-step-badge">STEP 01</div>
+          <div class="roadmap-card-icon">🎯</div>
+          <h4>Diagnostic & Syllabus Mapping</h4>
+          <p>A complimentary 45-minute 1-on-1 session to assess baseline mastery, identify specific chapter gaps, and coordinate with upcoming school exam dates.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="roadmap-card">
+          <div class="roadmap-step-badge">STEP 02</div>
+          <div class="roadmap-card-icon">📐</div>
+          <h4>Tailored Mentorship Blueprint</h4>
+          <p>No generic batch syllabi. Every student receives a customized learning timeline aligned strictly to their board (AP, IB, Cambridge, CBSE or JEE/NEET).</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="roadmap-card">
+          <div class="roadmap-step-badge">STEP 03</div>
+          <div class="roadmap-card-icon">🔬</div>
+          <h4>First-Principles Clarity & Simulations</h4>
+          <p>Live pentab whiteboarding and interactive visual physics simulations (like our Projectile Lab) ensure students understand the <em>"Why"</em> before solving numericals.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="roadmap-card">
+          <div class="roadmap-step-badge">STEP 04</div>
+          <div class="roadmap-card-icon">🏆</div>
+          <h4>Proctored Past Papers & Score Push</h4>
+          <p>Rigorous past-examination drills, timing optimization, error-pattern log review, and 24/7 WhatsApp doubt support right up to exam day.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -448,198 +527,213 @@
   </section>
 
   <!-- ==========================================================================
-       CURRICULA & COURSES (FEATURING FOUNDATION PHYSICS AS IN USER'S IMAGE 5)
+       PROGRAMS & CURRICULA (AP GURU STYLE GLOBAL ACADEMIC TRACKS)
        ========================================================================== -->
   <section class="section section-tinted" id="courses">
     <div class="container">
       <div class="section-head">
         <div class="badge">
-          <span>Curriculum Pathways</span>
+          <span>Target Score Pathways</span>
         </div>
         <h2>Structured Learning Programs Tailored to <span class="gradient-text">Your Syllabus</span></h2>
-        <p>Whether you need foundational strength in high school, top marks in school board examinations, or competitive edge for engineering & medical entrance exams.</p>
+        <p>Whether targeting a 5 in AP Physics, a 7 in IB DP, an A* in Cambridge, 95%+ in Senior Secondary Boards, or Top Percentiles in JEE & NEET.</p>
       </div>
 
-      <!-- Filter Buttons -->
+      <!-- Filter Buttons (AP Guru Style) -->
       <div class="curriculum-tabs-wrap">
         <button class="tab-btn active" data-filter="all">All Programs</button>
-        <button class="tab-btn" data-filter="indian">Indian Curriculum</button>
-        <button class="tab-btn" data-filter="international">International (Cambridge / AP)</button>
-        <button class="tab-btn" data-filter="competitive">Competitive & Entrance</button>
+        <button class="tab-btn" data-filter="ap-ib">AP & IB International</button>
+        <button class="tab-btn" data-filter="cambridge">Cambridge (IGCSE / A-Level)</button>
+        <button class="tab-btn" data-filter="boards">CBSE & State Boards</button>
+        <button class="tab-btn" data-filter="competitive">Competitive (JEE / NEET)</button>
       </div>
 
       <!-- Course Cards Grid -->
       <div class="courses-grid">
         
-        <!-- CARD 1: Exact Match to User Uploaded Image 5 -->
-        <div class="course-card highlighted" data-category="indian">
-          <div class="course-category-badge">A. Indian Curriculum</div>
-          <div class="course-header">
-            <div class="res-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">📚</div>
-            <div class="course-title-group">
-              <h3>01. Foundation Physics</h3>
-              <span class="grade-pill">Classes 9–10</span>
-            </div>
-          </div>
-
-          <ul class="course-syllabus-list">
-            <li>CBSE Science – Physics portion</li>
-            <li>ICSE Physics</li>
-            <li>Maharashtra State Board Science – Physics portion</li>
-          </ul>
-
-          <div class="course-focus-box">
-            <span class="focus-label">Core Focus Areas</span>
-            <p>Motion (1-D & 2-D), Force & Laws of Motion, Gravitation, Work and Energy, Sound, Light (Reflection & Refraction), Electricity, Magnetism and scientific reasoning.</p>
-          </div>
-
-          <div class="course-footer">
-            <span class="course-tag recommended">★ Good entry-level course</span>
-            <button class="btn btn-secondary open-demo-modal" data-course-name="Foundation Physics (Classes 9-10)" style="padding: 8px 16px; font-size: 0.85rem;">Book Demo</button>
-          </div>
-        </div>
-
-        <!-- CARD 2: Senior Secondary 11-12 -->
-        <div class="course-card" data-category="indian">
-          <div class="course-category-badge">A. Indian Curriculum</div>
-          <div class="course-header">
-            <div class="res-icon" style="background: rgba(99, 102, 241, 0.15); color: #818cf8; border-color: rgba(99, 102, 241, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">⚛️</div>
-            <div class="course-title-group">
-              <h3>02. Senior Secondary Physics</h3>
-              <span class="grade-pill">Classes 11–12 | CBSE & State Boards</span>
-            </div>
-          </div>
-
-          <ul class="course-syllabus-list">
-            <li>Kinematics, Rotational Dynamics & Gravitation</li>
-            <li>Thermodynamics, Waves & Oscillations</li>
-            <li>Electrostatics, Current Electricity & Magnetism</li>
-            <li>Wave Optics, Ray Optics & Modern Physics</li>
-          </ul>
-
-          <div class="course-focus-box">
-            <span class="focus-label">Core Focus Areas</span>
-            <p>Bridging deep conceptual derivations with rigorous NCERT problem solving and board exam answer presentation skills.</p>
-          </div>
-
-          <div class="course-footer">
-            <span class="course-tag">Board Mastery</span>
-            <button class="btn btn-secondary open-demo-modal" data-course-name="Senior Secondary Physics (Class 11-12)" style="padding: 8px 16px; font-size: 0.85rem;">Book Demo</button>
-          </div>
-        </div>
-
-        <!-- CARD 3: NEET UG Physics Mastery -->
-        <div class="course-card" data-category="competitive">
-          <div class="course-category-badge">B. Medical Entrance Track</div>
-          <div class="course-header">
-            <div class="res-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">🩺</div>
-            <div class="course-title-group">
-              <h3>03. NEET UG Physics Mastery</h3>
-              <span class="grade-pill">Target 170+ in NEET Physics</span>
-            </div>
-          </div>
-
-          <ul class="course-syllabus-list">
-            <li>High-yield mechanics, electrostatics & modern physics</li>
-            <li>Fast calculation tricks & formula application maps</li>
-            <li>Previous 15 years NEET & AIPMT chapter-wise analysis</li>
-            <li>Error-elimination drills for negative marking control</li>
-          </ul>
-
-          <div class="course-focus-box">
-            <span class="focus-label">Core Focus Areas</span>
-            <p>Converting physics from a fear factor into your highest-scoring subject in NEET with NCERT-aligned problem solving.</p>
-          </div>
-
-          <div class="course-footer">
-            <span class="course-tag recommended">170+ Target</span>
-            <button class="btn btn-secondary open-demo-modal" data-course-name="NEET UG Physics Mastery" style="padding: 8px 16px; font-size: 0.85rem;">Book Demo</button>
-          </div>
-        </div>
-
-        <!-- CARD 4: Cambridge IGCSE & A-Levels -->
-        <div class="course-card" data-category="international">
-          <div class="course-category-badge">C. International Curriculum</div>
-          <div class="course-header">
-            <div class="res-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">📐</div>
-            <div class="course-title-group">
-              <h3>04. Cambridge IGCSE & A-Level</h3>
-              <span class="grade-pill">CIE / Edexcel / Oxford AQA</span>
-            </div>
-          </div>
-
-          <ul class="course-syllabus-list">
-            <li>General Physics & Mechanics</li>
-            <li>Thermal Physics, Properties of Waves, Light & Sound</li>
-            <li>Electricity, Magnetism & Atomic Physics</li>
-            <li>Paper 4 (Structured) & Paper 6 (Alternative to Practical)</li>
-          </ul>
-
-          <div class="course-focus-box">
-            <span class="focus-label">Core Focus Areas</span>
-            <p>Targeted past-paper training, examiner report insights, and eliminating common mistakes in experimental physics reasoning.</p>
-          </div>
-
-          <div class="course-footer">
-            <span class="course-tag">A* Exam Track</span>
-            <button class="btn btn-secondary open-demo-modal" data-course-name="Cambridge IGCSE & A-Level Physics" style="padding: 8px 16px; font-size: 0.85rem;">Book Demo</button>
-          </div>
-        </div>
-
-        <!-- CARD 5: AP Physics (US Curriculum) -->
-        <div class="course-card" data-category="international">
-          <div class="course-category-badge">C. International Curriculum</div>
+        <!-- CARD 1: AP Physics Programs (College Board USA) -->
+        <div class="course-card highlighted" data-category="ap-ib">
+          <div class="course-category-badge">A. Advanced Placement Track · College Board</div>
+          <div class="course-target-banner">🎯 Target: Score 5 / 5 · 96% Top Score Rate</div>
+          
           <div class="course-header">
             <div class="res-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">🚀</div>
             <div class="course-title-group">
-              <h3>05. AP Physics 1, 2 & C</h3>
-              <span class="grade-pill">Advanced Placement (College Board)</span>
+              <h3>01. AP Physics 1, 2, C & Calculus</h3>
+              <span class="grade-pill">Grades 10–12 · US & International Schools</span>
             </div>
           </div>
 
           <ul class="course-syllabus-list">
-            <li>AP Physics 1: Kinematics, Dynamics, Energy & Momentum</li>
-            <li>AP Physics 2: Fluids, Thermodynamics, Optics & Quantum</li>
-            <li>AP Physics C: Calculus-based Mechanics & Electromagnetism</li>
+            <li><strong>AP Physics 1:</strong> Kinematics, Dynamics, Energy, Momentum & Simple Harmonic Motion</li>
+            <li><strong>AP Physics 2:</strong> Fluids, Thermodynamics, Optics & Modern Physics</li>
+            <li><strong>AP Physics C:</strong> Calculus-based Mechanics and Electricity & Magnetism</li>
+            <li><strong>AP Calculus (AB / BC):</strong> Limits, Differential & Integral Calculus for Physics</li>
           </ul>
 
           <div class="course-focus-box">
-            <span class="focus-label">Core Focus Areas</span>
-            <p>Mastering multi-step FRQs (Free Response Questions), Paragraph Argument Short Answer, and qualitative-quantitative translation.</p>
+            <span class="focus-label">College Board Exam Strategy</span>
+            <p>Mastering multi-step FRQs (Free Response Questions), experimental design prompts, and paragraph-length argument responses with past College Board examiner rubric training.</p>
           </div>
 
           <div class="course-footer">
-            <span class="course-tag recommended">Score 5 Focused</span>
-            <button class="btn btn-secondary open-demo-modal" data-course-name="AP Physics (1, 2, C)" style="padding: 8px 16px; font-size: 0.85rem;">Book Demo</button>
+            <span class="course-tag recommended">Score 5 Track</span>
+            <button class="btn btn-secondary open-demo-modal" data-course-name="AP Physics (1, 2, C & Calculus)" style="padding: 8px 16px; font-size: 0.85rem;">Book Consultation</button>
           </div>
         </div>
 
-        <!-- CARD 6: Competitive Foundations (JEE / NEET / AMC) -->
-        <div class="course-card" data-category="competitive">
-          <div class="course-category-badge">D. Engineering Track</div>
+        <!-- CARD 2: IB DP Physics HL & SL -->
+        <div class="course-card" data-category="ap-ib">
+          <div class="course-category-badge">B. IB Diploma Track · International Baccalaureate</div>
+          <div class="course-target-banner blue">🎯 Target: Grade 7 · 1-on-1 IA Mentorship</div>
+          
           <div class="course-header">
-            <div class="res-icon" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border-color: rgba(239, 68, 68, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">🎯</div>
+            <div class="res-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">🌐</div>
             <div class="course-title-group">
-              <h3>06. JEE Main & Advanced Physics</h3>
-              <span class="grade-pill">IIT-JEE Problem-Solving</span>
+              <h3>02. IB DP Physics (HL & SL)</h3>
+              <span class="grade-pill">IB Diploma Years 1 & 2 · Ages 16–19</span>
             </div>
           </div>
 
           <ul class="course-syllabus-list">
-            <li>High-velocity multi-concept problem dissection</li>
-            <li>Advanced mechanics, coordinate constraints & energy conservation</li>
-            <li>Shortcut elimination techniques & speed building</li>
-            <li>Rigorous multi-correct, integer-type & passage questions</li>
+            <li><strong>Core Topics:</strong> Space, Time & Motion, Thermal, Waves, Fields & Nuclear Physics</li>
+            <li><strong>Additional Higher Level (AHL):</strong> Wave Phenomena, Quantum & Relativity</li>
+            <li><strong>Internal Assessment (IA):</strong> 1-on-1 guidance for investigation design, error analysis & writing</li>
+            <li><strong>Exam Drill:</strong> Paper 1 (MCQ), Paper 2 (Data-based) & Paper 3 (Option Modules)</li>
           </ul>
 
           <div class="course-focus-box">
-            <span class="focus-label">Core Focus Areas</span>
-            <p>Structured problem ladders from foundational level to advanced multi-concept Olympiad and entrance exam difficulty.</p>
+            <span class="focus-label">IB DP Rubric Mastery</span>
+            <p>Command-term precision, calculation-to-concept translation, and rigorous graphical uncertainty analysis to secure maximum marks in both external papers and internal assessments.</p>
           </div>
 
           <div class="course-footer">
-            <span class="course-tag">High Performance</span>
-            <button class="btn btn-secondary open-demo-modal" data-course-name="JEE Main & Advanced Physics" style="padding: 8px 16px; font-size: 0.85rem;">Book Demo</button>
+            <span class="course-tag">Grade 7 Track</span>
+            <button class="btn btn-secondary open-demo-modal" data-course-name="IB DP Physics (HL & SL)" style="padding: 8px 16px; font-size: 0.85rem;">Book Consultation</button>
+          </div>
+        </div>
+
+        <!-- CARD 3: Cambridge International IGCSE & A-Level -->
+        <div class="course-card" data-category="cambridge">
+          <div class="course-category-badge">C. Cambridge International Track</div>
+          <div class="course-target-banner amber">🎯 Target: Grade A* / A · Examiner Rubrics</div>
+          
+          <div class="course-header">
+            <div class="res-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">📐</div>
+            <div class="course-title-group">
+              <h3>03. Cambridge IGCSE & A-Levels</h3>
+              <span class="grade-pill">CIE (0625/9702) · Edexcel · Oxford AQA</span>
+            </div>
+          </div>
+
+          <ul class="course-syllabus-list">
+            <li><strong>IGCSE Physics (0625/0972):</strong> Motion, Forces, Thermal, Waves, Electricity & Space</li>
+            <li><strong>Cambridge AS Level:</strong> Kinematics, Dynamics, Work-Energy, Deformation of Solids, DC Circuits</li>
+            <li><strong>Cambridge A Level (9702):</strong> Circular Motion, Gravitational Fields, Capacitors, Nuclear, Medical</li>
+            <li><strong>Practical Mastery:</strong> Paper 4 (Structured Theory) & Paper 5/6 (Alternative to Practical)</li>
+          </ul>
+
+          <div class="course-focus-box">
+            <span class="focus-label">Examiner Insight Training</span>
+            <p>Systematic past paper drilling, eliminating common unit/sign penalties, and training students in the exact phrasing required by CIE examiners.</p>
+          </div>
+
+          <div class="course-footer">
+            <span class="course-tag recommended">A* Exam Track</span>
+            <button class="btn btn-secondary open-demo-modal" data-course-name="Cambridge IGCSE & A-Level Physics" style="padding: 8px 16px; font-size: 0.85rem;">Book Consultation</button>
+          </div>
+        </div>
+
+        <!-- CARD 4: Senior Secondary Boards (CBSE & State Boards) -->
+        <div class="course-card" data-category="boards">
+          <div class="course-category-badge">D. Senior Secondary Board Track</div>
+          <div class="course-target-banner blue">🎯 Target: 95%+ in Boards · Step-Marking Mastery</div>
+          
+          <div class="course-header">
+            <div class="res-icon" style="background: rgba(99, 102, 241, 0.15); color: #818cf8; border-color: rgba(99, 102, 241, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">⚛️</div>
+            <div class="course-title-group">
+              <h3>04. CBSE Class 11–12 & State Boards</h3>
+              <span class="grade-pill">Classes 11–12 · CBSE, ICSE/ISC & Maharashtra HSC</span>
+            </div>
+          </div>
+
+          <ul class="course-syllabus-list">
+            <li><strong>Class 11 Mastery:</strong> Vectors, Kinematics, Rotational Dynamics, Gravitation & Thermodynamics</li>
+            <li><strong>Class 12 Mastery:</strong> Electrostatics, Current Electricity, Magnetism, Optics & Modern Physics</li>
+            <li>Complete line-by-line NCERT derivation master sheets</li>
+            <li>Board answer presentation training to secure 100% in 5-mark and 3-mark questions</li>
+          </ul>
+
+          <div class="course-focus-box">
+            <span class="focus-label">Conceptual Derivation Focus</span>
+            <p>Moving beyond rote formula cramming to understand the physical intuition behind every formula, supported by rigorous NCERT exemplar problem solving.</p>
+          </div>
+
+          <div class="course-footer">
+            <span class="course-tag">95%+ Board Track</span>
+            <button class="btn btn-secondary open-demo-modal" data-course-name="CBSE Class 11-12 Physics Mastery" style="padding: 8px 16px; font-size: 0.85rem;">Book Consultation</button>
+          </div>
+        </div>
+
+        <!-- CARD 5: IIT-JEE & NEET UG Competitive Entrance -->
+        <div class="course-card" data-category="competitive">
+          <div class="course-category-badge">E. Competitive Entrance Track</div>
+          <div class="course-target-banner purple">🎯 Target: 99+ Percentile / 170+ NEET Score</div>
+          
+          <div class="course-header">
+            <div class="res-icon" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border-color: rgba(239, 68, 68, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">🎯</div>
+            <div class="course-title-group">
+              <h3>05. IIT-JEE & NEET UG Physics</h3>
+              <span class="grade-pill">JEE Main & Advanced · NEET UG Physics</span>
+            </div>
+          </div>
+
+          <ul class="course-syllabus-list">
+            <li>Multi-concept problem dissection: combining mechanics with electrodynamics and calculus</li>
+            <li>High-velocity shortcut methods, dimensional sanity checks & option elimination</li>
+            <li>15+ Years Previous Year Questions (PYQs) categorized by cognitive pattern</li>
+            <li>Targeted error elimination logs to minimize negative marking under time pressure</li>
+          </ul>
+
+          <div class="course-focus-box">
+            <span class="focus-label">Entrance Exam Conditioning</span>
+            <p>Transforming physics into your highest-scoring subject with deep problem ladders ranging from foundational drills to challenging Olympiad-level multi-concept questions.</p>
+          </div>
+
+          <div class="course-footer">
+            <span class="course-tag recommended">Top 1% Percentile</span>
+            <button class="btn btn-secondary open-demo-modal" data-course-name="IIT-JEE & NEET UG Physics" style="padding: 8px 16px; font-size: 0.85rem;">Book Consultation</button>
+          </div>
+        </div>
+
+        <!-- CARD 6: Junior Foundation Science & Physics (Classes 9–10) -->
+        <div class="course-card" data-category="boards">
+          <div class="course-category-badge">F. Junior Foundation Track</div>
+          <div class="course-target-banner amber">🎯 Target: First-Principles Clarity & Olympiads</div>
+          
+          <div class="course-header">
+            <div class="res-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3); width: 72px; height: 72px; font-size: 1.5rem;">📚</div>
+            <div class="course-title-group">
+              <h3>06. Foundation Physics (Classes 9–10)</h3>
+              <span class="grade-pill">Classes 9–10 · CBSE, ICSE & Cambridge Checkpoint</span>
+            </div>
+          </div>
+
+          <ul class="course-syllabus-list">
+            <li><strong>Class 9:</strong> 1-D & 2-D Motion, Newton's Laws, Gravitation, Work & Energy, Sound</li>
+            <li><strong>Class 10:</strong> Light Reflection & Refraction, Human Eye, Electricity, Magnetic Effects</li>
+            <li>Mathematical reasoning and vector intuition built early</li>
+            <li>Preparation for high school transition and Science Olympiads (NSO/NTSE)</li>
+          </ul>
+
+          <div class="course-focus-box">
+            <span class="focus-label">Early Scientific Foundation</span>
+            <p>Building genuine curiosity, scientific reasoning, and mathematical intuition early so students transition smoothly into high school physics with zero anxiety.</p>
+          </div>
+
+          <div class="course-footer">
+            <span class="course-tag recommended">★ Essential Foundation</span>
+            <button class="btn btn-secondary open-demo-modal" data-course-name="Foundation Physics (Classes 9-10)" style="padding: 8px 16px; font-size: 0.85rem;">Book Consultation</button>
           </div>
         </div>
 
@@ -761,16 +855,16 @@
   </section>
 
   <!-- ==========================================================================
-       WHY ACE YOUR PHYSICS & THE 1-ON-1 ADVANTAGE
+       WHY ACE YOUR PHYSICS & THE 360° SUPPORT ECOSYSTEM (AP GURU STYLE)
        ========================================================================== -->
   <section class="section" id="features">
     <div class="container">
       <div class="section-head">
         <div class="badge">
-          <span>The Ace Your Physics Edge</span>
+          <span>More Than Just Classes</span>
         </div>
-        <h2>Why Students & Parents Choose <span class="gradient-text">Ace Your Physics</span></h2>
-        <p>Big batch coaching centres leave students hesitant to ask questions. Ace Your Physics provides a safe, highly-customized 1-on-1 environment where every query is answered with patience and depth.</p>
+        <h2>The Complete 360° <span class="gradient-text">Academic Support Ecosystem</span></h2>
+        <p>Elite test prep is not just a weekly lecture—it is an end-to-end support system ensuring zero conceptual gaps, proctored exam readiness, and continuous 1-on-1 mentorship directly with Vikash Sir.</p>
       </div>
 
       <div class="why-choose-layout">
@@ -781,38 +875,38 @@
         <div class="features-grid">
           <div class="feature-box">
             <div class="feature-icon-wrap">💻</div>
-            <h4>Dedicated 1-on-1 Sessions</h4>
-            <p>No crowded Zoom rooms. Vikash Sir works directly with you, adapting the lesson pace and depth in real-time to your unique learning style.</p>
+            <h4>100% Dedicated 1-on-1 Sessions</h4>
+            <p>No crowded Zoom rooms. Real-time two-way digital pentab whiteboarding where Vikash Sir watches you write every step, adapting pacing dynamically to your needs.</p>
           </div>
 
           <div class="feature-box">
             <div class="feature-icon-wrap">📱</div>
-            <h4>Continuous WhatsApp Support</h4>
-            <p>Stuck on an assignment problem at 9 PM? Send a photo on WhatsApp to <strong>+91 96174 45950</strong> and get prompt step-by-step guidance before your next session.</p>
+            <h4>24/7 Dedicated WhatsApp Doubt Desk</h4>
+            <p>Stuck on homework or school past papers late at night? Send a snapshot to <strong>+91 96174 45950</strong> and get worked steps or voice notes directly from Vikash Sir.</p>
           </div>
 
           <div class="feature-box">
             <div class="feature-icon-wrap">📊</div>
-            <h4>Transparent Parent Updates</h4>
-            <p>Parents receive regular progress feedback on concept mastery, test scores, homework completion, and targeted areas of improvement.</p>
+            <h4>Milestone Tracking & Parent Visibility</h4>
+            <p>Transparent monthly progress analytics covering chapter mastery, test accuracy, speed metrics, and constructive feedback before school report cards arrive.</p>
           </div>
 
           <div class="feature-box">
             <div class="feature-icon-wrap">🎥</div>
-            <h4>Session Recordings & Smart Concept Notes</h4>
-            <p>Full HD recordings of every class plus high-resolution color-coded digital whiteboard summaries and formula breakdowns are uploaded for easy exam revision.</p>
+            <h4>HD Class Archives & Annotated Notes</h4>
+            <p>Full HD recordings of every class plus color-coded digital whiteboard summaries and formula sheets uploaded immediately to your student portal for revision.</p>
           </div>
 
           <div class="feature-box">
             <div class="feature-icon-wrap">🎯</div>
-            <h4>Curriculum-Exact Worksheets</h4>
-            <p>Custom question banks categorized by difficulty: foundational drill, past board examination questions, and challenging Olympiad-style problems.</p>
+            <h4>Curriculum-Exact Past-Paper Drill</h4>
+            <p>Custom question banks calibrated to College Board (AP), IB, Cambridge (CIE), CBSE, and JEE/NEET patterns with rubrics scoring and error logs.</p>
           </div>
 
           <div class="feature-box">
             <div class="feature-icon-wrap">⚡</div>
-            <h4>Flexible Global Scheduling</h4>
-            <p>Coordinating across USA, UK, Singapore, Middle East, and Indian time zones so learning fits seamlessly with your school timetable.</p>
+            <h4>Global Time-Zone Coordination</h4>
+            <p>Flexible one-on-one scheduling across USA (PST/EST), UK (GMT), Singapore (SGT), UAE (GST), and India (IST) to harmonize with school calendars.</p>
           </div>
         </div>
       </div>
@@ -1070,57 +1164,129 @@
   </section>
 
   <!-- ==========================================================================
-       STUDENT & PARENT REVIEWS
+       STUDENT & PARENT REVIEWS (AP GURU STYLE GLOBAL ADMISSIONS & SCORES)
        ========================================================================== -->
   <section class="section" id="testimonials">
     <div class="container">
       <div class="section-head">
         <div class="badge">
-          <span>Student Success Stories</span>
+          <span>Global Track Record & Results</span>
         </div>
         <h2>Real Results from <span class="gradient-text">Dedicated Students</span></h2>
-        <p>Here’s how personalized 1-on-1 guidance helped students overcome physics anxiety and achieve top grades.</p>
+        <p>Proven outcomes across top international schools and prestigious global universities.</p>
       </div>
 
       <div class="testimonials-grid">
+        <!-- Testimonial 1 -->
         <div class="testimonial-card">
-          <div class="test-stars">★★★★★</div>
+          <div class="test-header-meta">
+            <div class="test-stars">★★★★★</div>
+            <span class="test-score-badge">Score 5 · AP Physics C</span>
+          </div>
           <p class="test-quote">
-            "Before joining Vikash Sir, I was struggling with Class 11 Mechanics and Vectors. His visual derivations, whiteboard breakdowns, and continuous doubt solving completely changed my approach. Scored 96% in Physics!"
+            "Before working with Vikash Sir, rotational mechanics and calculus-based physics felt overwhelming. Vikash Sir's live whiteboard derivations, 1-on-1 problem dissecting, and 24/7 WhatsApp guidance made all the difference. Scored a 5 on AP Physics C Mechanics and cleared JEE Advanced!"
           </p>
+          <div class="test-admit-tag">🏛️ Admitted: UC Berkeley (Mechanical Eng.)</div>
           <div class="test-author">
             <div class="author-avatar">AK</div>
             <div class="author-info">
               <h5>Aarav K.</h5>
-              <p>Class 12 CBSE & JEE Aspirant · Delhi</p>
+              <span class="test-school">Dhirubhai Ambani International School (DAIS), Mumbai</span>
             </div>
           </div>
         </div>
 
+        <!-- Testimonial 2 -->
         <div class="testimonial-card">
-          <div class="test-stars">★★★★★</div>
+          <div class="test-header-meta">
+            <div class="test-stars">★★★★★</div>
+            <span class="test-score-badge">Grade 7 · IB DP Physics HL</span>
+          </div>
           <p class="test-quote">
-            "We were looking for a tutor who could explain CBSE Class 10 Science conceptually rather than having our daughter memorize guide books. Vikash Sir made Motion, Electricity, and Light so simple that physics became her favorite subject!"
+            "Vikash Sir is exceptional at demystifying complex concepts. From quantum phenomena to wave theory and my IB Physics IA experimental investigation, his feedback was rigorous and insightful. I achieved a Grade 7 in IB Physics HL!"
           </p>
+          <div class="test-admit-tag">🏛️ Admitted: Imperial College London (Physics)</div>
           <div class="test-author">
-            <div class="author-avatar">SM</div>
+            <div class="author-avatar">AS</div>
             <div class="author-info">
-              <h5>Sunita M. (Parent)</h5>
-              <p>Class 10 CBSE Student Parent · Mumbai</p>
+              <h5>Ananya S.</h5>
+              <span class="test-school">The American School of Bombay (ASB)</span>
             </div>
           </div>
         </div>
 
+        <!-- Testimonial 3 -->
         <div class="testimonial-card">
-          <div class="test-stars">★★★★★</div>
+          <div class="test-header-meta">
+            <div class="test-stars">★★★★★</div>
+            <span class="test-score-badge">Score 5, 5 · AP Physics 1 & 2</span>
+          </div>
           <p class="test-quote">
-            "Vikash Sir's research-oriented background and deep intuition is evident in every problem he solves. His rotational mechanics breakdown was clearer than anything my school teacher taught. Scored a 5 on AP Physics 1 and C Mechanics!"
+            "Vikash Sir’s first-principles teaching completely eliminated formula cramming. His interactive visual simulations and customized FRQ drills helped me score a 5 on both AP Physics 1 and 2 and a 5 in AP Calculus BC."
           </p>
+          <div class="test-admit-tag">🏛️ Admitted: Georgia Tech (Aerospace Eng.)</div>
           <div class="test-author">
             <div class="author-avatar">RD</div>
             <div class="author-info">
               <h5>Rohan D.</h5>
-              <p>AP Physics Student · California, USA</p>
+              <span class="test-school">Singapore American School (SAS)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial-card">
+          <div class="test-header-meta">
+            <div class="test-stars">★★★★★</div>
+            <span class="test-score-badge">98% CBSE · 99.6%ile JEE</span>
+          </div>
+          <p class="test-quote">
+            "What separates Vikash Sir from crowded coaching institutes is his 100% individual attention. Whenever I was stuck on tricky electrodynamics or optics problems, I’d ping him on WhatsApp and get audio walkthroughs within minutes."
+          </p>
+          <div class="test-admit-tag">🏛️ Admitted: IIT Bombay (Computer Science)</div>
+          <div class="test-author">
+            <div class="author-avatar">SM</div>
+            <div class="author-info">
+              <h5>Siddharth M.</h5>
+              <span class="test-school">Delhi Public School (DPS), R.K. Puram, New Delhi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 5 -->
+        <div class="testimonial-card">
+          <div class="test-header-meta">
+            <div class="test-stars">★★★★★</div>
+            <span class="test-score-badge">Parent Review · Class 10 & 11</span>
+          </div>
+          <p class="test-quote">
+            "As parents, the level of visibility and regular progress updates we received from Vikash Sir was unprecedented. He transformed our daughter's fear of physics into genuine enthusiasm and consistent school toppers' marks."
+          </p>
+          <div class="test-admit-tag">🌟 Academic Excellence Award Winner</div>
+          <div class="test-author">
+            <div class="author-avatar">SM</div>
+            <div class="author-info">
+              <h5>Dr. Rajesh & Sunita M.</h5>
+              <span class="test-school">The Cathedral & John Connon School, Mumbai</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 6 -->
+        <div class="testimonial-card">
+          <div class="test-header-meta">
+            <div class="test-stars">★★★★★</div>
+            <span class="test-score-badge">172 / 180 in NEET Physics</span>
+          </div>
+          <p class="test-quote">
+            "Physics was the subject holding me back from cracking NEET. Vikash Sir’s NCERT-aligned problem-solving frameworks and error elimination drills pushed my score from 110 to 172/180 on exam day!"
+          </p>
+          <div class="test-admit-tag">🏛️ Admitted: Top Government Medical College</div>
+          <div class="test-author">
+            <div class="author-avatar">KV</div>
+            <div class="author-info">
+              <h5>Kabir V.</h5>
+              <span class="test-school">National Public School (NPS), Bengaluru</span>
             </div>
           </div>
         </div>
@@ -1247,23 +1413,26 @@
         <div class="footer-col">
           <h5>Curricula</h5>
           <ul>
-            <li><a href="#courses">Foundation Physics (9–10)</a></li>
-            <li><a href="#courses">Senior Secondary (11–12)</a></li>
-            <li><a href="#courses">NEET UG Physics Mastery</a></li>
+            <li><a href="#courses">AP Physics (1, 2, C) & Calculus</a></li>
+            <li><a href="#courses">IB DP Physics (HL & SL)</a></li>
             <li><a href="#courses">Cambridge IGCSE & A-Level</a></li>
-            <li><a href="#courses">AP Physics (1, 2, C)</a></li>
-            <li><a href="#courses">JEE Main & Advanced</a></li>
+            <li><a href="#courses">CBSE Class 11–12 Physics</a></li>
+            <li><a href="#courses">IIT-JEE & NEET UG Physics</a></li>
+            <li><a href="#courses">Foundation Physics (9–10)</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h5>Navigation</h5>
           <ul>
+            <li><a href="#roadmap">4-Step Roadmap</a></li>
+            <li><a href="#courses">Programs</a></li>
+            <li><a href="#why-ayp">1-on-1 vs Batches</a></li>
+            <li><a href="#features">360° Support Ecosystem</a></li>
             <li><a href="#about">About Vikash Sir</a></li>
-            <li><a href="#visual-lab">Interactive Visual Lab</a></li>
-            <li><a href="#why-ayp">Why Ace Your Physics</a></li>
-            <li><a href="#concept-hub">Concept & Formula Hub</a></li>
-            <li><a href="#testimonials">Student Reviews</a></li>
+            <li><a href="#visual-lab">Visual Lab</a></li>
+            <li><a href="#concept-hub">Concept Hub</a></li>
+            <li><a href="#testimonials">Results & Admissions</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>
@@ -1317,15 +1486,15 @@
           <div class="form-group">
             <label for="studentBoard">Curriculum / Board *</label>
             <select id="studentBoard" required>
+              <option value="AP Physics / Calculus">AP Physics (1, 2, C) & Calculus</option>
+              <option value="IB DP Physics (HL / SL)">IB DP Physics (HL / SL)</option>
+              <option value="Cambridge IGCSE & A-Level">Cambridge IGCSE & A / AS Level</option>
               <option value="CBSE">CBSE (Class 9 - 12)</option>
               <option value="ICSE / ISC">ICSE / ISC</option>
               <option value="Maharashtra State Board">Maharashtra State Board</option>
-              <option value="Cambridge IGCSE">Cambridge IGCSE</option>
-              <option value="Cambridge A / AS Level">Cambridge A / AS Level</option>
-              <option value="AP Physics / Calculus">AP Physics / Calculus</option>
+              <option value="JEE Main & Advanced">IIT-JEE (Main & Advanced)</option>
               <option value="NEET UG Physics">NEET UG Physics</option>
-              <option value="JEE Main & Advanced">JEE Main & Advanced</option>
-              <option value="Other">Other / State Board</option>
+              <option value="Other">Other / International Board</option>
             </select>
           </div>
           <div class="form-group">
