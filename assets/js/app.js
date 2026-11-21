@@ -1,21 +1,48 @@
 /**
  * ACE YOUR PHYSICS - Main Application Script
- * Features:
- * - Interactive Projectile Motion Visual Lab
- * - Curriculum Category Filtering
- * - Free Demo Booking Modal & WhatsApp Lead Generator
- * - FAQ Accordion
- * - Dynamic Mobile Navigation & Smooth Scroll
+ * 
+ * ============================================================================
+ * SOCIAL MEDIA & CONTACT CONFIGURATION (EDIT YOUR LINKS HERE)
+ * Yahan aap apne Instagram, Facebook, Telegram aur WhatsApp links badal sakte hain.
+ * ============================================================================
  */
+window.AYP_SOCIAL = {
+  // Apna Instagram profile link yahan daalein:
+  instagram: 'https://instagram.com/aceyourphysics',
+  
+  // Apna Facebook page link yahan daalein:
+  facebook: 'https://facebook.com/aceyourphysics',
+  
+  // Apna Telegram channel ya group link yahan daalein:
+  telegram: 'https://t.me/aceyourphysics',
+  
+  // WhatsApp direct link:
+  whatsapp: 'https://wa.me/919617445950?text=Hello%20Vikash%20Sir%2C%20I%20am%20interested%20in%20Ace%20Your%20Physics%20classes.'
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
+  initSocialLinks();
   initNavbar();
   initCurriculumFilter();
   initBookingModal();
   initFaqAccordion();
   initLightbox();
 });
+
+/**
+ * Sync all social links with data-social attributes
+ */
+function initSocialLinks() {
+  const config = window.AYP_SOCIAL;
+  if (!config) return;
+  document.querySelectorAll('[data-social]').forEach(el => {
+    const platform = el.getAttribute('data-social');
+    if (config[platform]) {
+      el.href = config[platform];
+    }
+  });
+}
 
 /* ==========================================================================
    0. THEME TOGGLE (DARK / LIGHT MODE - SAFED / DARK THEME)

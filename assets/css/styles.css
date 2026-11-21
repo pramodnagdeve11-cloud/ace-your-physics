@@ -219,9 +219,71 @@ a {
 .top-announcement-inner {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.top-announcement-left {
+  display: flex;
+  align-items: center;
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.top-announcement-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-social-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+.top-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+body.light-theme .top-social-link {
+  background: rgba(15, 23, 42, 0.08);
+  color: #1e293b;
+}
+
+.top-social-link:hover {
+  transform: translateY(-2px) scale(1.08);
+}
+
+.top-social-link.insta:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(214, 36, 159, 0.4);
+}
+
+.top-social-link.fb:hover {
+  background: #1877f2;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(24, 119, 242, 0.4);
+}
+
+.top-social-link.tg:hover {
+  background: #229ed9;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(34, 158, 217, 0.4);
 }
 
 .announcement-pill {
@@ -2020,11 +2082,78 @@ body.light-theme .hero-pill {
   gap: 14px;
 }
 
-/* Floating WhatsApp Button */
-.floating-whatsapp {
+/* ==========================================================================
+   FLOATING SOCIAL & CONTACT DOCK (WHATSAPP, TELEGRAM, INSTAGRAM, FACEBOOK)
+   ========================================================================== */
+.floating-social-dock {
   position: fixed;
   bottom: 24px;
   right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 95;
+}
+
+.floating-social-dock .dock-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  text-decoration: none;
+}
+
+.floating-social-dock .dock-btn:hover {
+  transform: translateY(-4px) scale(1.08);
+}
+
+.floating-social-dock .dock-btn.telegram {
+  background: #229ed9;
+  box-shadow: 0 6px 18px rgba(34, 158, 217, 0.45);
+}
+
+.floating-social-dock .dock-btn.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow: 0 6px 18px rgba(214, 36, 159, 0.45);
+}
+
+.floating-social-dock .dock-btn.facebook {
+  background: #1877f2;
+  box-shadow: 0 6px 18px rgba(24, 119, 242, 0.45);
+}
+
+.floating-social-dock .dock-btn .dock-tooltip {
+  position: absolute;
+  bottom: 54px;
+  right: 50%;
+  transform: translateX(50%) translateY(6px);
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.floating-social-dock .dock-btn:hover .dock-tooltip {
+  opacity: 1;
+  transform: translateX(50%) translateY(0);
+}
+
+/* Floating WhatsApp Button inside dock or standalone */
+.floating-whatsapp {
   background: #25d366;
   color: #ffffff;
   padding: 12px 20px;
@@ -2035,8 +2164,8 @@ body.light-theme .hero-pill {
   font-weight: 700;
   font-size: 0.92rem;
   box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-  z-index: 90;
   transition: var(--transition);
+  text-decoration: none;
 }
 
 .floating-whatsapp:hover {
@@ -2065,6 +2194,74 @@ body.light-theme .hero-pill {
   font-size: 0.92rem;
   margin-top: 14px;
   max-width: 320px;
+}
+
+/* Footer Social Community Links */
+.footer-social-wrap {
+  margin-top: 20px;
+}
+
+.footer-social-title {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+
+.footer-social-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.social-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 13px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #f1f5f9;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-link-btn:hover {
+  transform: translateY(-2px);
+}
+
+.social-link-btn.instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 6px 16px rgba(214, 36, 159, 0.4);
+}
+
+.social-link-btn.facebook:hover {
+  background: #1877f2;
+  color: #ffffff;
+  border-color: #1877f2;
+  box-shadow: 0 6px 16px rgba(24, 119, 242, 0.4);
+}
+
+.social-link-btn.telegram:hover {
+  background: #229ed9;
+  color: #ffffff;
+  border-color: #229ed9;
+  box-shadow: 0 6px 16px rgba(34, 158, 217, 0.4);
+}
+
+.social-link-btn.whatsapp:hover {
+  background: #25d366;
+  color: #ffffff;
+  border-color: #25d366;
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
 }
 
 .footer-col h5 {
@@ -2234,11 +2431,40 @@ body.light-theme .hero-pill {
     font-size: 0.82rem;
   }
 
-  .floating-whatsapp {
-    bottom: 20px;
-    right: 14px;
-    padding: 10px 14px;
-    font-size: 0.84rem;
+  .floating-social-dock {
+    bottom: 18px;
+    right: 12px;
+    gap: 6px;
+  }
+
+  .floating-social-dock .dock-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .floating-social-dock .dock-btn svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .floating-social-dock .floating-whatsapp {
+    padding: 9px 13px;
+    font-size: 0.82rem;
+    gap: 6px;
+  }
+
+  .floating-social-dock .dock-btn .dock-tooltip {
+    display: none;
+  }
+
+  .top-announcement-inner {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .top-announcement-social {
+    margin-top: 2px;
   }
 }
 
@@ -2853,18 +3079,37 @@ body.light-theme .cta-desc {
 body.light-theme .site-footer {
   background: #f1f5f9;
   border-top: 1px solid rgba(15, 23, 42, 0.1);
+  color: #475569;
 }
 
-body.light-theme .footer-col h4 {
+body.light-theme .footer-col h4,
+body.light-theme .footer-col h5 {
   color: #0f172a;
 }
 
+body.light-theme .footer-col a,
 body.light-theme .footer-links a {
   color: #475569;
 }
 
+body.light-theme .footer-col a:hover,
 body.light-theme .footer-links a:hover {
   color: #0284c7;
+}
+
+body.light-theme .footer-brand p {
+  color: #475569;
+}
+
+body.light-theme .footer-social-title {
+  color: #64748b;
+}
+
+body.light-theme .social-link-btn {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #1e293b;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
 body.light-theme .footer-bottom {
