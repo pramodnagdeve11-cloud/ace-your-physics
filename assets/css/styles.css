@@ -268,6 +268,18 @@ body.light-theme .top-social-link {
   transform: translateY(-2px) scale(1.08);
 }
 
+.top-social-link.yt:hover {
+  background: #ff0000;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.45);
+}
+
+.top-social-link.li:hover {
+  background: #0a66c2;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(10, 102, 194, 0.45);
+}
+
 .top-social-link.insta:hover {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
   color: #ffffff;
@@ -2113,6 +2125,16 @@ body.light-theme .hero-pill {
   transform: translateY(-4px) scale(1.08);
 }
 
+.floating-social-dock .dock-btn.youtube {
+  background: #ff0000;
+  box-shadow: 0 6px 18px rgba(255, 0, 0, 0.45);
+}
+
+.floating-social-dock .dock-btn.linkedin {
+  background: #0a66c2;
+  box-shadow: 0 6px 18px rgba(10, 102, 194, 0.45);
+}
+
 .floating-social-dock .dock-btn.telegram {
   background: #229ed9;
   box-shadow: 0 6px 18px rgba(34, 158, 217, 0.45);
@@ -2234,6 +2256,20 @@ body.light-theme .hero-pill {
 
 .social-link-btn:hover {
   transform: translateY(-2px);
+}
+
+.social-link-btn.youtube:hover {
+  background: #ff0000;
+  color: #ffffff;
+  border-color: #ff0000;
+  box-shadow: 0 6px 16px rgba(255, 0, 0, 0.4);
+}
+
+.social-link-btn.linkedin:hover {
+  background: #0a66c2;
+  color: #ffffff;
+  border-color: #0a66c2;
+  box-shadow: 0 6px 16px rgba(10, 102, 194, 0.4);
 }
 
 .social-link-btn.instagram:hover {
@@ -2536,6 +2572,13 @@ body.light-theme .footer-tag:hover {
 
   .floating-social-dock .dock-btn .dock-tooltip {
     display: none;
+  }
+
+  @media (max-width: 520px) {
+    .floating-social-dock .dock-btn.facebook,
+    .floating-social-dock .dock-btn.linkedin {
+      display: none;
+    }
   }
 
   .top-announcement-inner {

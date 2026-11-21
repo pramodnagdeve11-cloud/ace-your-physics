@@ -7,6 +7,12 @@
  * ============================================================================
  */
 window.AYP_SOCIAL = {
+  // Apna YouTube channel link yahan daalein:
+  youtube: 'https://youtube.com/@aceyourphysics',
+
+  // Apna LinkedIn profile/page link yahan daalein:
+  linkedin: 'https://linkedin.com/company/aceyourphysics',
+
   // Apna Instagram profile link yahan daalein:
   instagram: 'https://instagram.com/aceyourphysics',
   
