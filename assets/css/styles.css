@@ -2322,11 +2322,9 @@ body.light-theme .hero-pill {
   color: var(--accent-blue);
 }
 
-/* SEO Keyword Directory & Tag Cloud */
+/* SEO Keyword Directory & Tag Cloud (In Code for Search Bots, Visually Hidden) */
 .footer-seo-directory {
-  margin-top: 40px;
-  padding-top: 32px;
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  display: none !important;
 }
 
 .footer-seo-head {
