@@ -14,7 +14,7 @@ echo [1/3] Git status check ho raha hai...
 git status
 echo.
 
-set DEFAULT_URL=https://github.com/pramodnagdeve11-cloud/aceyourphysics.git
+set DEFAULT_URL=https://github.com/pramodnagdeve11-cloud/ace-your-physics.git
 echo Default GitHub URL: %DEFAULT_URL%
 echo.
 set /p REPO_URL="Enter dabayein default URL (%DEFAULT_URL%) ke liye, ya koi naya URL paste karein: "
@@ -35,7 +35,7 @@ echo [3/3] Code GitHub par upload ho raha hai...
 echo (Agar browser login window open ho, toh 'Sign in with your browser' par click karein)
 echo.
 
-git push -u origin main
+git push -u origin main --force
 
 if %errorlevel% equ 0 (
     echo.
