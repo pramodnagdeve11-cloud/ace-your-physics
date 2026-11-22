@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 90" width="100%" height="100%">
+  <defs>
+    <!-- Brand Gradient -->
+    <linearGradient id="logoGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="40%" stop-color="#2563eb"/>
+      <stop offset="75%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+
+    <!-- Text FIX Gradient -->
+    <linearGradient id="fixGradLight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="50%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+
+    <!-- Vertical Beam -->
+    <linearGradient id="logoBeamLight" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(10, 5)">
+    <!-- ICON MARK (Center at x=40, y=40) -->
+    <!-- Tilted Electron Orbit 1 -->
+    <g transform="translate(40, 40) rotate(-35) translate(-40, -40)">
+      <ellipse cx="40" cy="40" rx="36" ry="14" fill="none" stroke="url(#logoGradLight)" stroke-width="2.2" stroke-dasharray="3 2" opacity="0.85"/>
+      <circle cx="76" cy="40" r="3" fill="#0284c7"/>
+    </g>
+
+    <!-- Tilted Electron Orbit 2 -->
+    <g transform="translate(40, 40) rotate(35) translate(-40, -40)">
+      <ellipse cx="40" cy="40" rx="36" ry="14" fill="none" stroke="url(#logoGradLight)" stroke-width="2.2" opacity="0.85"/>
+      <circle cx="4" cy="40" r="3" fill="#7c3aed"/>
+    </g>
+
+    <!-- Central Phi (Φ) Ring -->
+    <circle cx="40" cy="40" r="20" fill="none" stroke="url(#logoGradLight)" stroke-width="4.2"/>
+
+    <!-- Vertical Beam (Φ Axis) -->
+    <line x1="40" y1="8" x2="40" y2="72" stroke="url(#logoBeamLight)" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="40" cy="8" r="2.5" fill="#0284c7"/>
+    <circle cx="40" cy="72" r="2.5" fill="#4f46e5"/>
+
+    <!-- Quantum Core -->
+    <circle cx="40" cy="40" r="6.5" fill="url(#logoGradLight)"/>
+    <circle cx="40" cy="40" r="2.8" fill="#ffffff"/>
+  </g>
+
+  <!-- WORDMARK: PHYFIX -->
+  <!-- "PHY" in crisp deep navy -->
+  <text x="104" y="52" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="40" font-weight="800" letter-spacing="-0.5" fill="#0f172a">PHY</text>
+
+  <!-- "FIX" in bold electric blue/violet -->
+  <text x="194" y="52" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="40" font-weight="900" letter-spacing="-0.5" fill="url(#fixGradLight)">FIX</text>
+
+  <!-- Small Quantum Dot on the I -->
+  <circle cx="218.5" cy="22" r="3.2" fill="#0284c7"/>
+
+  <!-- TAGLINE: ACE YOUR PHYSICS -->
+  <text x="106" y="72" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" letter-spacing="4.5" fill="#0284c7" opacity="0.95">ACE YOUR PHYSICS</text>
+
+  <!-- Decorative Separator Dot & Mentorship subtext -->
+  <circle cx="282" cy="69" r="1.8" fill="#4f46e5"/>
+  <text x="290" y="72" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" letter-spacing="1.5" fill="#64748b">1-ON-1</text>
+</svg>
